@@ -30,18 +30,22 @@
       </p>
       <div class="cart-controls">
    
+        Quantity: {{ cartService.getQuantity(product?.id || 0) }}
+        Price: {{ cartService.getPriceQ(product?.id || 0) }}
 
         <!-- Cart Buttons -->
         <ion-buttons>
+          <ion-button (click)="removeitem()">
+            <ion-icon class="removeicon" name="remove-circle-outline"></ion-icon>
+            Remove from Cart
+          </ion-button>
+          
           <ion-button (click)="additem()">
             <ion-icon class="addicon" name="add-circle-outline"></ion-icon>
             Add to Cart
           </ion-button>
 
-          <ion-button (click)="removeitem()">
-            <ion-icon class="removeicon" name="remove-circle-outline"></ion-icon>
-            Remove from Cart
-          </ion-button>
+
         </ion-buttons>
       </div>
     </ion-card-content>

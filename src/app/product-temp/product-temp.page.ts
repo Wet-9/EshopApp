@@ -16,7 +16,7 @@ export class ProductTempPage implements OnInit {
 
  // Could do .this.product = string examples
 
-  constructor(private route: ActivatedRoute, private navCtrl: NavController, private cartService: CartService) { }
+  constructor(private route: ActivatedRoute, private navCtrl: NavController, public cartService: CartService) { }
 
   ngOnInit() {
     const productIdString = this.route.snapshot.paramMap.get('id');
@@ -32,7 +32,7 @@ productback() {
   this.navCtrl.navigateForward('/tabs/products');
 }
   
-
+// When clicked add item to cart. 
 additem() {
   if (this.product) {
     this.cartService.addToCart(this.product);
@@ -40,12 +40,14 @@ additem() {
   }
 }
 
-
+// Remove 
 removeitem() {
   if (this.product) {
     this.cartService.removeFromCart(this.product);
     console.log("Item removed from cart:", this.product);
   }
 }
+// 
+
 
 }

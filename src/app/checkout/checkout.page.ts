@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService, CartItem } from '../cart.service'; // Export From Service
+
 
 @Component({
   selector: 'app-checkout',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckoutPage implements OnInit {
 
-  constructor() { }
+  cartItems: CartItem[] = [];
+  
+  // Calculate Cart Price
+  cartPrice: number = 0;
+
+
+  constructor(public cartService: CartService) { }
 
   ngOnInit() {
+    this.cartItems = this.cartService.getItems();
+    this.CalcTotal();
   }
+// Adding sum based on quantity and item
+  CalcTotal() {
+    this.cartPrice = 0; 
+    for (let i = 0; i < this.cartItems.length; i++){
+      this.cartPrice += this.cartItems[i].product.price * this.cartItems[i].quantity;
+    }
+  }
+
+  
 
 }
