@@ -1,25 +1,41 @@
-<ion-tabs>
+<ion-header>
+  <ion-toolbar color="favorite">
+    <ion-title>
+      Simpzy Ecommerce 
+    </ion-title>
+    <ion-buttons (click)="gotoTab1()" slot="start">
+      <ion-button>
+        <img src="./assets/logo3.svg" alt="Logo" style="width: 40px;">
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="tab1">
+
+
+<ion-tabs>
+<!--Icons-->
+  <ion-tab-bar slot="bottom" class="tabbar">
+    
+    <ion-tab-button tab="tab1" layout="icon-top">
       <ion-icon aria-hidden="true" name="home"></ion-icon>
       <ion-label>Home</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="tab2">
+    <ion-tab-button tab="tab2" layout="icon-top">
       <ion-icon aria-hidden="true" name="pricetags"></ion-icon>
       <ion-label>Products</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="tab3">
+
+    <ion-tab-button tab="tab3" layout="icon-top">
       <ion-icon aria-hidden="true" name="cart"></ion-icon>
       <ion-label>Check Out</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="user">
+    <ion-tab-button tab="user" layout="icon-top">
       <ion-icon aria-hidden="true" name="person"></ion-icon>
       <ion-label>User</ion-label>
     </ion-tab-button>
-
   </ion-tab-bar>
 </ion-tabs>

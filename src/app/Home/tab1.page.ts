@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +8,11 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  constructor(private navCtrl: NavController) {}
+
+  gotoTab1() {
+    this.navCtrl.navigateForward('/tabs/tab1');
+  }
+
 
 }

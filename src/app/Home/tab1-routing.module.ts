@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: '',
     component: Tab1Page,
+  },
+  {
+    path: 'product-temp/:id',
+    loadChildren: () => import('../product-temp/product-temp.module').then( m => m.ProductTempPageModule)
   }
 ];
 

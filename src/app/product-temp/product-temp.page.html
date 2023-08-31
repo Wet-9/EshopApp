@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{ product?.name }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img [src]="product?.imageUrl" />
+    <ion-card-content>
+      <ion-card-title>
+        {{ product?.name }}
+      </ion-card-title>
+      <p>
+        {{ product?.description }}
+      </p>
+      <p>Hello
+        {{ product }}
+      </p>
+      <p>
+        Price: {{ product?.price }}
+        {{ product | json }}
+      </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

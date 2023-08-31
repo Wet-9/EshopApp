@@ -1,1 +1,39 @@
 
+// Tab Bar Properties
+ion-tab-bar {
+    --background: #f4f4f4;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+    bottom: 20px;
+    position: absolute; //Changed from relative to fix white background
+    border-radius: 16px;
+    width: 92%;
+    border-top: none;
+    left: 0; //added to fix positioning
+    right: 0; //added to fix positioning 
+    margin: 0 auto;
+    height: 55px;
+
+    
+  }
+  
+  // Icon Properties
+    ion-tab-button {
+    --color: #d4d4d4;
+    --color-selected: #5a41a0;
+    --padding-bottom: 8px;
+    --padding-top: 8px;
+  
+    &::before {
+      background-color: transparent;
+      display: block;
+      content: "";
+      margin: 0 auto;
+      width: 20px;
+      height: 2px;
+    }
+  
+    &.tab-selected::before {
+      background-color: #5a41a0;
+    }
+  }
+  
