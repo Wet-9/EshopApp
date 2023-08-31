@@ -1,0 +1,62 @@
+
+<!--Home Display-->
+<ion-header>
+  <ion-toolbar color="favorite">
+    <ion-title>
+      Simpzy Ecommerce 
+    </ion-title>
+    <ion-buttons (click)="gotoTab1()" slot="start">
+      <ion-button>
+        <img src="./assets/logo3.svg" alt="Logo" style="width: 40px;">
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card class="margin-top">
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">Today's Promotion</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6">
+            <ion-card>
+              <ion-img src="product_image_url_here"></ion-img>
+              <ion-card-header>
+                <ion-card-title>Product 1</ion-card-title>
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+
+          <ion-col size="6">
+            <ion-card>
+              <ion-img src="product_image_url_here"></ion-img>
+              <ion-card-header>
+                <ion-card-title>Product 2</ion-card-title>
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list>
+    <ion-list-header>
+      Categories
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Electronics</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Clothing</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Furniture</ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

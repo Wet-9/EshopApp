@@ -1,5 +1,10 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="productback()">
+        <ion-icon class="backicon" name="chevron-back-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>
       {{ product?.name }}
     </ion-title>
@@ -16,13 +21,29 @@
       <p>
         {{ product?.description }}
       </p>
-      <p>Hello
-        {{ product }}
+      <p>
+        Hello {{ product }}
       </p>
       <p>
         Price: {{ product?.price }}
         {{ product | json }}
       </p>
+      <div class="cart-controls">
+   
+
+        <!-- Cart Buttons -->
+        <ion-buttons>
+          <ion-button (click)="additem()">
+            <ion-icon class="addicon" name="add-circle-outline"></ion-icon>
+            Add to Cart
+          </ion-button>
+
+          <ion-button (click)="removeitem()">
+            <ion-icon class="removeicon" name="remove-circle-outline"></ion-icon>
+            Remove from Cart
+          </ion-button>
+        </ion-buttons>
+      </div>
     </ion-card-content>
   </ion-card>
 </ion-content>

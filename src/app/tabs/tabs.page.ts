@@ -11,7 +11,7 @@ export class TabsPage {
   constructor(private navCtrl: NavController) {}
 
 
-//Route to home (tab1)
+//Moved to home page
   gotoTab1() {
     this.navCtrl.navigateForward('/tabs/tab1');
   }
