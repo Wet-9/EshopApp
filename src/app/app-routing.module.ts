@@ -15,7 +15,8 @@ const routes: Routes = [
     path: 'product-temp',
     loadChildren: () => import('./product-temp/product-temp.module').then( m => m.ProductTempPageModule)
   },
-  { path: 'product-temp/:id', component: ProductTempPage },  {
+  { path: 'product-temp/:id', component: ProductTempPage },
+  {
     path: 'checkout',
     loadChildren: () => import('./checkout/checkout.module').then( m => m.CheckoutPageModule)
   },

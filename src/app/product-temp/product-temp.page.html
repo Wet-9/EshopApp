@@ -5,49 +5,51 @@
         <ion-icon class="backicon" name="chevron-back-circle-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>
-      {{ product?.name }}
-    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card>
-    <img [src]="product?.imageUrl" />
-    <ion-card-content>
-      <ion-card-title>
-        {{ product?.name }}
-      </ion-card-title>
-      <p>
-        {{ product?.description }}
-      </p>
-      <p>
-        Hello {{ product }}
-      </p>
-      <p>
-        Price: {{ product?.price }}
-        {{ product | json }}
-      </p>
-      <div class="cart-controls">
-   
-        Quantity: {{ cartService.getQuantity(product?.id || 0) }}
-        Price: {{ cartService.getPriceQ(product?.id || 0) }}
-
-        <!-- Cart Buttons -->
-        <ion-buttons>
-          <ion-button (click)="removeitem()">
-            <ion-icon class="removeicon" name="remove-circle-outline"></ion-icon>
-            Remove from Cart
-          </ion-button>
-          
-          <ion-button (click)="additem()">
-            <ion-icon class="addicon" name="add-circle-outline"></ion-icon>
-            Add to Cart
-          </ion-button>
-
-
-        </ion-buttons>
+<ion-content class="ion-padding" style="background-color: white;">
+  <!-- Product Image -->
+  <div class="image-container">
+    <img [src]="product?.imageUrl" alt="Product Image" />
+  </div>
+<br>
+  <!-- Product Description Card -->
+  <ion-card class="product-card">
+    <ion-card-header>
+      <div class="header-flex">
+        <ion-card-title class="bold-title">
+          {{ product?.name }}
+        </ion-card-title>
+        <div class="price bold-title" style="color: white;">
+          {{ product?.price }}
+        </div>
       </div>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ product?.description }}</p>
     </ion-card-content>
   </ion-card>
+  
+
+  <!-- Quantity Show -->
+  <ion-card class="quantity-card">
+    <ion-card-content class="quantity-controls">
+      <ion-button (click)="removeitem()" class="quantity-button">
+        <ion-icon name="remove-circle-outline"></ion-icon>
+      </ion-button>
+
+      <div class="quantity-number">
+        {{ cartService.getQuantity(product?.id || 0) }}
+      </div>
+
+      <ion-button (click)="additem()" class="quantity-button">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+
+  <!-- Add to Cart -->
+  <div class="half-circle"></div>
 </ion-content>

@@ -8,8 +8,8 @@
 
 <ion-content>
   <ul>
-    <li *ngFor="let product of products" (click)="navigateToProduct(product.id)">
-      {{ product.name }}
+    <li *ngFor="let product of products">
+      <a (click)="navigateToProduct(product.id)">{{ product.name }}</a>
     </li>
   </ul>
 </ion-content>
