@@ -7,9 +7,18 @@
 </ion-header>
 
 <ion-content>
-  <ul>
-    <li *ngFor="let product of products">
-      <a (click)="navigateToProduct(product.id)">{{ product.name }}</a>
-    </li>
-  </ul>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let product of products">
+        <ion-card (click)="navigateToProduct(product.id)">
+          <img [src]="product.imageUrl" />
+          <ion-card-content>
+            <ion-card-title>
+              {{ product.name }}
+            </ion-card-title>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

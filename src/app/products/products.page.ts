@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
+// Replace Mock products with database 
 import { MOCK_PRODUCTS } from '../productmodel/products';
 
 
@@ -13,7 +15,7 @@ export class ProductsPage implements OnInit {
 
   constructor(private router: Router) {}
 
-// Nav
+// Nav 
   navigateToProduct(id: number) {
     this.router.navigate(['/tabs/product-temp', id]);
   }

@@ -4,6 +4,9 @@ import { Product, MOCK_PRODUCTS } from '../productmodel/products'; // Temporary 
 import { NavController } from '@ionic/angular';
 import { CartService } from '../cart.service'; // Importing servie add delete clear etc.
 
+import { ApisqlService } from '../apisql.service'; //Google Cloud API
+
+
 // *********** THIS IS A TEMP TS ******************
 @Component({
   selector: 'app-product-temp',
@@ -16,7 +19,8 @@ export class ProductTempPage implements OnInit {
 
  // Could do .this.product = string examples
 
-  constructor(private route: ActivatedRoute, private navCtrl: NavController, public cartService: CartService) { }
+  constructor(private route: ActivatedRoute, private navCtrl: NavController, public cartService: CartService,
+    private apiService: ApisqlService) { }
 
   ngOnInit() {
     const productIdString = this.route.snapshot.paramMap.get('id');
@@ -24,7 +28,18 @@ export class ProductTempPage implements OnInit {
         const productId = +productIdString;
         this.product = MOCK_PRODUCTS.find(p => p.id === productId);
         console.log('Product:', this.product);  // Debug
-    }
+    };
+
+    // Log Products test
+    this.apiService.getProducts()
+      .subscribe(
+        data => {
+          console.log("Data from Google API: ", data);
+        },
+        error => {
+          console.error("Error: ", error);
+        }
+      );
 }
 
 // Go back function
@@ -48,6 +63,9 @@ removeitem() {
   }
 }
 // 
-
+// Redirect to Home Page when icon is clicked
+// gotoTab1() {
+//   this.navCtrl.navigateForward('/tabs/tab1');
+// }
 
 }

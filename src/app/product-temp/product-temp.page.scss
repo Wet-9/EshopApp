@@ -1,7 +1,9 @@
+ion-content {
+  --background: linear-gradient(225deg, hsla(0, 0%, 100%, 1) 0%, hsla(351, 100%, 94%, 1) 100%);
+}
 
-
-ion-header {
-    margin-top: 50px;
+.backicon {
+  color: grey;
 }
 
 .image-container {
@@ -9,7 +11,7 @@ ion-header {
   margin: 20px 0;
   
   img {
-    max-width: 100%;
+    max-width: 50%;
     height: auto;
   }
 }

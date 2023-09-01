@@ -1,14 +1,16 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button (click)="productback()">
-        <ion-icon class="backicon" name="chevron-back-circle-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<!-- Back Button -->
+<!-- style="--background: white; --border-width: 0px; --box-shadow: none;" -->
 
-<ion-content class="ion-padding" style="background-color: white;">
+
+
+
+<ion-content class="ion-padding">
+
+  <ion-buttons>
+    <ion-button (click)="productback()">
+      <ion-icon class="backicon" name="arrow-back"></ion-icon>
+    </ion-button>
+  </ion-buttons>
   <!-- Product Image -->
   <div class="image-container">
     <img [src]="product?.imageUrl" alt="Product Image" />
