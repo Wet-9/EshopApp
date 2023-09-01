@@ -40,7 +40,7 @@ app.use('/subcategories', subcategories_router);
 app.use('/inventories', inventory_router);
 app.use('/users', users_router);
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 app.listen(port, ()=>{
-    console.log('Server is running on port ${port}...');
+    console.log(`Server is running on port ${port}...`);
 });
