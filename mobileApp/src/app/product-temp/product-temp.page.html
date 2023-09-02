@@ -1,0 +1,57 @@
+<!-- Back Button -->
+<!-- style="--background: white; --border-width: 0px; --box-shadow: none;" -->
+
+
+
+
+<ion-content class="ion-padding">
+
+  <ion-buttons>
+    <ion-button (click)="productback()">
+      <ion-icon class="backicon" name="arrow-back"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <!-- Product Image -->
+  <div class="image-container">
+    <img [src]="product?.imageUrl" alt="Product Image" />
+  </div>
+<br>
+  <!-- Product Description Card -->
+  <ion-card class="product-card">
+    <ion-card-header>
+      <div class="header-flex">
+        <ion-card-title class="bold-title">
+          {{ product?.name }}
+        </ion-card-title>
+        <div class="price bold-title" style="color: white;">
+          {{ product?.price }}
+        </div>
+      </div>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ product?.description }}</p>
+    </ion-card-content>
+  </ion-card>
+  
+
+  <!-- Quantity Show -->
+  <ion-card class="quantity-card">
+    <ion-card-content class="quantity-controls">
+      <ion-button (click)="removeitem()" class="quantity-button">
+        <ion-icon name="remove-circle-outline"></ion-icon>
+      </ion-button>
+
+      <div class="quantity-number">
+        {{ cartService.getQuantity(product?.id || 0) }}
+      </div>
+
+      <ion-button (click)="additem()" class="quantity-button">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+
+  <!-- Add to Cart -->
+  <div class="half-circle"></div>
+</ion-content>

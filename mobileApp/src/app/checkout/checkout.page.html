@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>checkout</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <div *ngIf="cartItems.length > 0; else emptyCart">
+        <h2>Your Cart Items</h2>
+        <ul>
+          <li *ngFor="let item of cartItems">
+            {{ item.product.name }} : {{ item.product.price }} x {{ item.quantity }} = {{ item.product.price * item.quantity }}
+          </li>
+        </ul>
+        <h3>Total Price: {{ cartPrice }}</h3>
+      </div>
+      
+      <ng-template #emptyCart>
+        <p>Your cart is empty.</p>
+      </ng-template>
+    </ion-toolbar>
+  </ion-header>
+</ion-content>
