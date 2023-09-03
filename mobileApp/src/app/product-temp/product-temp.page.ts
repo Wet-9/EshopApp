@@ -9,6 +9,8 @@ import { ApisqlService } from '../apisql.service'; //Google Cloud API
 import { AlertController } from '@ionic/angular';
 
 import { ToastController } from '@ionic/angular';
+
+import { Router } from '@angular/router';
 // *********** This is API  ******************
 @Component({
   selector: 'app-product-temp',
@@ -23,7 +25,8 @@ export class ProductTempPage implements OnInit {
 
   constructor(private route: ActivatedRoute, private navCtrl: NavController, public cartService: CartService,
     private apiService: ApisqlService, private alertController: AlertController,
-    public toastController: ToastController) { }
+    public toastController: ToastController,
+    private router: Router) { }
 
 // Alert for when added to cart
     // async showAddToCartAlert(quantity: number) {
@@ -40,8 +43,9 @@ export class ProductTempPage implements OnInit {
       const toast = await this.toastController.create({
         message: message,
         duration: 2000,
+        icon: 'bag-outline',
         position: 'top',
-        cssClass: 'product-toast'
+        color: 'secondary'
       });
       toast.present();
     }
@@ -57,7 +61,7 @@ export class ProductTempPage implements OnInit {
             const productIdString = this.route.snapshot.paramMap.get('id');
             if (productIdString !== null) {
               const productId = +productIdString;
-              this.product = data.find(p => p.id === productId); // Assuming the `id` field exists in your API data
+              this.product = data.find(p => p.id === productId); 
               console.log('Product:', this.product);  // Debug
             }
           },
@@ -84,6 +88,12 @@ export class ProductTempPage implements OnInit {
 productback() {
   this.navCtrl.navigateForward('/tabs/products');
 }
+
+// Go to checkout 
+goToCheckout() {
+  this.router.navigate(['/tabs/checkout']);
+}
+
   
 // When clicked add item to cart. 
 additem() {

@@ -58,6 +58,11 @@ getQuantity(productId: number): number {
   return item ? item.quantity : 0;
 }
 
+// Get Total Quant
+getTotalQuantity(): number {
+  return this.items.reduce((total, item) => total + item.quantity, 0);
+}
+
 // Get price based on quantity
 getPriceQ(productId: number): number {
   const item = this.items.find(item => item.product.id === productId);
