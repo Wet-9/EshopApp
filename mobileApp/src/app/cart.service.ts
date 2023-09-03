@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Product } from './productmodel/products'; //products template temp***
+import { ProductAPI } from './productmodel/products'; //products template temp***
 
 export interface CartItem {
-  product: Product;
+  product: ProductAPI;
   quantity: number;
 }
 
@@ -16,7 +16,7 @@ export class CartService {
  
 
 // Add item to cart function
-addToCart(product: Product) {
+addToCart(product: ProductAPI) {
   const item = this.items.find(item => item.product.id === product.id);
   if (item) {
     item.quantity += 1;
@@ -28,7 +28,7 @@ addToCart(product: Product) {
 
 
 // Remove from cart function
-removeFromCart(product: Product) {
+removeFromCart(product: ProductAPI) {
   const item = this.items.find(item => item.product.id === product.id);
   if (item) {
     if (item.quantity === 1) {
@@ -63,7 +63,7 @@ getPriceQ(productId: number): number {
   const item = this.items.find(item => item.product.id === productId);
   const quantity = this.getQuantity(productId);
   if (item) {
-    return item.product.price * quantity;
+    return item.product.productPrice * quantity;
   }
   return 0;
 }

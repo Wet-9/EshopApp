@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApisqlService } from '../apisql.service';
 
 // Replace Mock products with database 
-import { MOCK_PRODUCTS } from '../productmodel/products';
+import { ProductAPI } from '../productmodel/products';
 
 
 @Component({
@@ -11,16 +12,25 @@ import { MOCK_PRODUCTS } from '../productmodel/products';
   styleUrls: ['./products.page.scss'],
 })
 export class ProductsPage implements OnInit {
-  products = MOCK_PRODUCTS;
+  products: ProductAPI[] = [];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private apiService: ApisqlService) {}
 
 // Nav 
   navigateToProduct(id: number) {
-    this.router.navigate(['/tabs/product-temp', id]);
-  }
+  this.router.navigate(['/product-temp', id]);
+}
 
+// Implement APIserive fetch
   ngOnInit() {
+    this.apiService.getProducts().subscribe(
+      data => {
+        this.products = data;
+      },
+      error => {
+        console.error("Error fetching products:", error);
+      }
+    );
   }
 
 }

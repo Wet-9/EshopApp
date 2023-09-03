@@ -11,10 +11,10 @@
     <ion-row>
       <ion-col size="6" *ngFor="let product of products">
         <ion-card (click)="navigateToProduct(product.id)">
-          <img [src]="product.imageUrl" />
+          <img [src]="" />
           <ion-card-content>
             <ion-card-title>
-              {{ product.name }}
+              {{ product.productName }}
             </ion-card-title>
           </ion-card-content>
         </ion-card>

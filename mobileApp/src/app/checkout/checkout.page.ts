@@ -25,7 +25,7 @@ export class CheckoutPage implements OnInit {
   CalcTotal() {
     this.cartPrice = 0; 
     for (let i = 0; i < this.cartItems.length; i++){
-      this.cartPrice += this.cartItems[i].product.price * this.cartItems[i].quantity;
+      this.cartPrice += this.cartItems[i].product.productPrice * this.cartItems[i].quantity;
     }
   }
 

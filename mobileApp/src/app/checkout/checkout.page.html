@@ -11,7 +11,7 @@
         <h2>Your Cart Items</h2>
         <ul>
           <li *ngFor="let item of cartItems">
-            {{ item.product.name }} : {{ item.product.price }} x {{ item.quantity }} = {{ item.product.price * item.quantity }}
+            {{ item.product.productName }} : {{ item.product.productPrice }} x {{ item.quantity }} = {{ item.product.productPrice * item.quantity }}
           </li>
         </ul>
         <h3>Total Price: {{ cartPrice }}</h3>

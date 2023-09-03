@@ -23,10 +23,10 @@ const routes: Routes = [
         path: 'user',
         loadChildren: () => import('../user/user.module').then(m => m.UserPageModule)
       },
-      {
-        path: 'product-temp/:id',
-        loadChildren: () => import('../product-temp/product-temp.module').then( m => m.ProductTempPageModule) // For product id??
-      },
+      // {
+      //   path: 'product-temp/:id',
+      //   loadChildren: () => import('../product-temp/product-temp.module').then( m => m.ProductTempPageModule) // For product id??
+      // },
       {
         path: '',
         redirectTo: '/Home/tab1',
