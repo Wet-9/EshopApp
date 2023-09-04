@@ -1,0 +1,56 @@
+ion-content {
+    --background: white;
+}
+.toolbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .toolbar-logo {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+  }
+  
+  .toolbar-title {
+    width: 100%;
+    text-align: center;
+  }
+
+  // Somehow removed black thin line????
+  ion-toolbar[color="favorite"] {
+    --border-width: 0px;
+  }
+
+////////////////////////////////////////////////////
+
+.promo-card {
+    background: #F7D08A;
+}
+
+.about-card {
+    background: #E45F2B;
+}
+
+.about-text {
+    color: white;
+}
+
+.deal-card { 
+    background: #E3F09B;
+}
+
+// icons
+
+.ionc {
+    font-size: 2em;
+    color: #72FA93;
+  }
+
+.ion-text-center {
+    color: black;
+}

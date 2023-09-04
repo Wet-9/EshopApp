@@ -16,19 +16,27 @@
   <ion-card class="product-card">
     <ion-card-header>
       <div class="header-flex">
-        <ion-card-title class="bold-title">
+        <ion-card-title class="PName bold-title">
           {{ product?.productName }}
         </ion-card-title>
-        <div class="price bold-title" style="color: white;">
+        <div class="Pprice bold-title">
           {{ product?.productPrice }}
         </div>
       </div>
     </ion-card-header>
-    <ion-card-content>
-      <p>{{ product?.productDescription }}</p>
+    <ion-card-content class="Pdescription">
+      <p>SKU: {{ product?.productSKU }}</p>
+    </ion-card-content>
+    <ion-card-content class="Pdescription">
+      <p>{{ product?.productDescription }}</p>  <!-- Display description here -->
     </ion-card-content>
   </ion-card>
   
+  <!-- <ion-card class="description-card">
+    <ion-card-content>
+      <p>{{ product?.productDescription }}</p> 
+    </ion-card-content>
+  </ion-card> -->
 
   <!-- Quantity Show -->
   <ion-card class="quantity-card">
@@ -50,10 +58,10 @@
 
 
   <!-- Add to Cart -->
-  <div class="half-circle" (click)="goToCheckout()">
-    <div class="checkout-container">
-      <ion-icon name="cart" class="customcart"></ion-icon>
-      <div class="checkout-text">Check Out</div>
+  <div class="buy-now-container" (click)="goToCheckout()">
+    <div class="buy-now-button">
+      <ion-icon name="cart" class="buy-now-icon"></ion-icon>
+      <div class="buy-now-text">Buy Now</div>
     </div>
   </div>
 
