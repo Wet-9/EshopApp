@@ -73,5 +73,10 @@ getPriceQ(productId: number): number {
   return 0;
 }
 
+//get total price
+getTotalPrice(): number {
+  return this.items.reduce((total, item) => total + item.product.productPrice * item.quantity, 0);
+}
+
   constructor() { }
 }

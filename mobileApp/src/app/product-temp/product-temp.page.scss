@@ -1,18 +1,11 @@
-ion-content {
-  --background: rgb(243, 237, 237);
-}
 
-.backicon {
-  color: black;
-  font-size: 30px;
-}
 
 .image-container {
   text-align: center;
   margin: 20px 0;
   
   img {
-    max-width: 50%;
+    max-width: 100%;
     height: auto;
   }
 }
@@ -20,22 +13,28 @@ ion-content {
 .product-card {
   border-radius: 16px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  background: #E45F2B;
+  background: #ffc8dd;
   transition: 0.5s;
   // box-shadow: 0 0 10px #d5673b;
 }
 
 .PName {
-  color: white;
+  color: black;
 }
 
 .Pprice {
-  color: #72FA93;
+  color: #44dd6b;
   font-size: 30px;
 }
 
 .Pdescription {
-  color: white;
+  color: black;
+  font-size: 16px;
+}
+
+.pSKU {
+  color: #92949c;
+  font-size: 16px;
 }
 
 ////////// ***************************************
@@ -49,7 +48,7 @@ ion-content {
 .quantity-card {
   border-radius: 16px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  background: #9AC1F0;
+  background: #a2d2ff;
   transition: 0.5s;
   box-shadow: 0 0 10px white;
 }
@@ -85,15 +84,15 @@ ion-content {
 // Bottom
 
 .buy-now-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 20px 0;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  // width: 100%;
+  padding: 20px;
 }
 //background: linear-gradient(to right, #ff9800, #ff5722);  /* orange gradient */
 .buy-now-button {
-  background: #72FA93;
+  background: #76c893;
   padding: 20px 40px;
   display: flex;
   align-items: center;
@@ -103,16 +102,101 @@ ion-content {
   cursor: pointer;
   // box-shadow: 0px 0px 15px 5px rgba(255, 98, 0, 0.6); 
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
+  width: 125%;
 }
 
 
 .buy-now-icon {
   font-size: 28px;
+  color: white;
   margin-right: 10px;
 }
 
 .buy-now-text {
   font-weight: bold;
+  color: white;
 }
 
 
+// Spec
+
+
+.Spec {
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.spec-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+.spec-desc {
+  color: black;
+}
+
+.curved-img {
+  clip-path: ellipse(69% 35% at 50% 0%);
+}
+
+////
+
+.curve-container {
+  background-color: #d2bcdf;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom-left-radius: 50% 20%;
+  border-bottom-right-radius: 50% 20%;
+  margin-bottom: 50px;
+}
+
+.back-button-container {
+  position: absolute;
+  left: 0;
+}
+
+.backarrow {
+  font-size: 30px;
+  color: #ff4d6d;
+}
+
+.test-text {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+
+/// favourite 
+.action-container {
+  display: flex;
+  justify-content: space-start;
+  align-items: center;
+  gap: 20px;
+}
+
+.favorite-container {
+  display: flex;
+  align-items: center;
+}
+
+.favorite-button {
+  display: flex;
+  align-items: center;
+}
+
+.favorite-icon {
+  font-size: 24px;
+  margin-left: 30px;
+  color: #ffafcc;
+  border: 2px solid #92949c; 
+  border-radius: 50%; 
+  padding: 10px; 
+}
+
+.favorite-text {
+  font-size: 18px;
+}

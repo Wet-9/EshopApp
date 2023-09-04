@@ -50,6 +50,17 @@ export class ProductTempPage implements OnInit {
       toast.present();
     }
 
+    async heartwarning(message: string) {
+      const warning = await this.toastController.create({
+        message: message,
+        duration: 2000,
+        icon: 'alert',
+        position: 'top',
+        color: 'danger'
+      });
+      warning.present();
+    }
+
 
     ngOnInit() {
       this.apiService.getProducts()
@@ -86,7 +97,7 @@ export class ProductTempPage implements OnInit {
 
 // Go back function
 productback() {
-  this.navCtrl.navigateForward('/tabs/products');
+  this.navCtrl.back();
 }
 
 // Go to checkout 
@@ -105,7 +116,10 @@ additem() {
   }
 }
 
-
+//favourite icon WIP
+toggleFavorite() {
+  this.heartwarning(`Sign in First`);
+}
 
 
 // Remove 

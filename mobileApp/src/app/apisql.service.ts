@@ -18,4 +18,8 @@ export class ApisqlService {
   return this.http.get<any[]>(`${this.apiUrl}/products/get_products`);
 }
 
+getsubcategories(): Observable<any[]> {
+  return this.http.get<any[]>(`${this.apiUrl}/subcategories/get_subcategories`);
+}
+
 }

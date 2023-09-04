@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService, CartItem } from '../cart.service'; // Export From Service
-
+import { ProductAPI } from '../productmodel/products';
+import { ApisqlService } from '../apisql.service';
 
 @Component({
   selector: 'app-checkout',
@@ -10,16 +11,16 @@ import { CartService, CartItem } from '../cart.service'; // Export From Service
 export class CheckoutPage implements OnInit {
 
   cartItems: CartItem[] = [];
-  
+
   // Calculate Cart Price
   cartPrice: number = 0;
 
 
-  constructor(public cartService: CartService) { }
+  constructor(public cartService: CartService, private apiService: ApisqlService) { }
 
   ngOnInit() {
     this.cartItems = this.cartService.getItems();
-    this.CalcTotal();
+    this.updateTotalPrice();
   }
 // Adding sum based on quantity and item
   CalcTotal() {
@@ -29,6 +30,22 @@ export class CheckoutPage implements OnInit {
     }
   }
 
+  additem(item: CartItem) {
+    this.cartService.addToCart(item.product);
+    this.updateTotalPrice();
+  }
+    
+  // Remove
+  removeitem(item: CartItem) {
+    this.cartService.removeFromCart(item.product);
+    this.updateTotalPrice();
+  }
+  
+  updateTotalPrice() {
+    this.cartPrice = this.cartService.getTotalPrice();
+  }
   
 
+
+  
 }

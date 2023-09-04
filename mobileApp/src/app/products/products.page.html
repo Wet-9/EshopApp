@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Products
+    <ion-title class="htitle">
+      <ion-icon name="basket"></ion-icon> Categories 
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,12 +9,16 @@
 <ion-content>
   <ion-grid>
     <ion-row>
-      <ion-col size="6" *ngFor="let product of products">
-        <ion-card (click)="navigateToProduct(product.id)">
-          <img [src]="" />
+      <ion-col size="6" *ngFor="let subCategory of subCategories">
+        <ion-card (click)="routetoproducts(subCategory.id)">
           <ion-card-content>
-            <ion-card-title>
-              {{ product.productName }}
+            <ion-card-title class="card-space">
+              <div class="card-space">{{ subCategory.subCategoryName }}</div>
+              <br>
+              <div class="product-count">
+                <ion-icon name="pricetag"></ion-icon>
+                <div class="card-space">{{ subCategory.productCount }} Items</div>
+              </div>
             </ion-card-title>
           </ion-card-content>
         </ion-card>

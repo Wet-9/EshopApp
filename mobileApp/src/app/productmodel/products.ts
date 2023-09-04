@@ -14,6 +14,17 @@ export interface ProductAPI {
   productSPEC: string;
 }
 
+
+// Api for subcategory
+export interface SubCategoryAPI {
+  id: number;
+  subCategoryName: string;
+  productCount?: number;
+}
+
+
+
+
 // (Hard Coded Mock Example)
 // export interface Product {
 //     id: number;

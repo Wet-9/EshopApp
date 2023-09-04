@@ -1,6 +1,4 @@
-ion-content {
-    --background: white;
-}
+
 .toolbar-container {
     display: flex;
     align-items: center;
@@ -28,20 +26,18 @@ ion-content {
 
 ////////////////////////////////////////////////////
 
-.promo-card {
-    background: #F7D08A;
-}
-
 .about-card {
-    background: #E45F2B;
+    background: #ffafcc;
+    border-radius: 20px;
 }
 
 .about-text {
-    color: white;
+    color: #000000;
 }
 
 .deal-card { 
-    background: #E3F09B;
+    background: #a2d2ff;
+    border-radius: 20px;
 }
 
 .card-text {
@@ -52,9 +48,10 @@ ion-content {
 
 .ionc {
     font-size: 2em;
-    color: #72FA93;
+    color: #ff4d6d;
   }
 
 .ion-text-center {
     color: black;
 }
+

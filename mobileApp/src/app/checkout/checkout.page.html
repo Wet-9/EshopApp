@@ -1,25 +1,58 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>checkout</ion-title>
+    <ion-title>Checkout</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  
   <ion-header collapse="condense">
     <ion-toolbar>
-      <div *ngIf="cartItems.length > 0; else emptyCart">
-        <h2>Your Cart Items</h2>
-        <ul>
-          <li *ngFor="let item of cartItems">
-            {{ item.product.productName }} : {{ item.product.productPrice }} x {{ item.quantity }} = {{ item.product.productPrice * item.quantity }}
-          </li>
-        </ul>
-        <h3>Total Price: {{ cartPrice }}</h3>
-      </div>
-      
-      <ng-template #emptyCart>
-        <p>Your cart is empty.</p>
-      </ng-template>
+      <ion-title>Your Cart Items</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <div *ngIf="cartItems.length > 0; else emptyCart">
+    
+    <!-- Individual product card -->
+    <ion-card *ngFor="let item of cartItems">
+      <ion-card-header>
+        <img [src]="item.product.productURL" alt="Product Image"/>
+        <ion-card-title>{{ item.product.productName }}</ion-card-title>
+        <ion-card-subtitle>SKU: {{ item.product.productSKU }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label>Price: ${{ item.product.productPrice }}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-button (click)="removeitem(item)" slot="start">
+            <ion-icon name="remove-circle-outline"></ion-icon>
+          </ion-button>
+          <ion-label>Quantity: {{ item.quantity }}</ion-label>
+          <ion-button (click)="additem(item)" slot="end">
+            <ion-icon name="add-circle-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Total Price -->
+    <ion-card>
+      <ion-card-content>
+        <h2>Total Price: ${{ cartPrice }}</h2>
+      </ion-card-content>
+    </ion-card>
+    
+    <!-- Checkout Button -->
+    <!-- <ion-button expand="full" color="primary" (click)="goToPayment()">
+      Proceed to Payment
+    </ion-button> -->
+
+  </div>
+  
+  <ng-template #emptyCart>
+    <p>Your cart is empty.</p>
+  </ng-template>
+
 </ion-content>

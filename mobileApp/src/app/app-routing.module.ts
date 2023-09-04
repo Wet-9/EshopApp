@@ -31,8 +31,15 @@ const routes: Routes = [
   {
     path: 'product-temp/:id',
     loadChildren: () => import('./product-temp/product-temp.module').then( m => m.ProductTempPageModule)
+  },
+  {
+    path: 'productslayout',
+    loadChildren: () => import('./productslayout/productslayout.module').then( m => m.ProductslayoutPageModule)
+  },
+  {
+    path: 'productslayout/:id',
+    loadChildren: () => import('./productslayout/productslayout.module').then(m => m.ProductslayoutPageModule)
   }
-  
 
 ];
 @NgModule({
