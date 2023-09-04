@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
+
+import { RegisterPageComponent } from `../register`;
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -33,8 +36,5 @@ export class LoginPage implements OnInit {
         console.log(err);
       }
     })
-  }
-  register(){
-    console.log('register');
   }
 }
