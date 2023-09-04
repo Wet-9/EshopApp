@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const bcrypt = require('bcrypt');
+const User = require('./models/user');
 
 app.use(cors());
 app.use(express.json());
@@ -33,7 +35,7 @@ app.get('/', (req, res) => {
 */
 
 //Register route
-app.post('/register', upload.single('image'), function (req, res) {
+app.post('/register', function (req, res) {
     let clearTextPassword = req.body.password;
     let salt = 10;
 
@@ -41,10 +43,6 @@ app.post('/register', upload.single('image'), function (req, res) {
     bcrypt.hash(clearTextPassword, salt, function (err, passwordHash) {
         let user_data = req.body;
         user_data.password = passwordHash; //replace clear text password with hash value
-
-        if (req.file) {
-            user_data.image = req.file.filename;
-        }
 
         //Create user in database
         User.create(user_data).then((result) => {

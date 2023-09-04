@@ -9,19 +9,19 @@ const User = sequelize.define('User', {
         primaryKey: true,
         unique: true
     },
-    userFirstName: {
+    email: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    userLastName: {
+    password: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    userEmail: {
+    first_name: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    userPassword: {
+    last_name: {
         type: Sequelize.STRING,
         allowNull: false
     },
