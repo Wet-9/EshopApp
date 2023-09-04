@@ -10,6 +10,8 @@ export interface ProductAPI {
   // createdAt: string;  // Not needed
   // updatedAt: string;  // Not needed
   subCategoryId: number;
+  productURL: string;
+  productSPEC: string;
 }
 
 // (Hard Coded Mock Example)

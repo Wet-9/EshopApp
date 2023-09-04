@@ -9,8 +9,9 @@
   </ion-buttons>
   <!-- Product Image -->
   <div class="image-container">
-    <img [src]="" alt="Product Image" />
+    <img [src]="product?.productURL" alt="Product Image" />
   </div>
+
 <br>
   <!-- Product Description Card -->
   <ion-card class="product-card">
@@ -32,11 +33,11 @@
     </ion-card-content>
   </ion-card>
   
-  <!-- <ion-card class="description-card">
+  <ion-card class="product-card">
     <ion-card-content>
-      <p>{{ product?.productDescription }}</p> 
+      <p>{{ product?.productSPEC }}</p> 
     </ion-card-content>
-  </ion-card> -->
+  </ion-card>
 
   <!-- Quantity Show -->
   <ion-card class="quantity-card">
