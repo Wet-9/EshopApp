@@ -8,7 +8,9 @@ router.post('/add_product', (req, res)=>{
         productName: req.body.productName,
         productDescription: req.body.productDescription,
         productPrice: parseFloat(req.body.productPrice),
-        subCategoryId: parseInt(req.body.subCategoryId)
+        subCategoryId: parseInt(req.body.subCategoryId),
+        productURL: req.body.productURL,
+        productSPEC: req.body.productSPEC
     }).then((result)=>{
         return res.status(200).send(result);
     }).catch((err)=>{

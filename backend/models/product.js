@@ -17,12 +17,20 @@ const Product = sequelize.define('Product', {
         allowNull: false
     },
     productDescription: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(5000),
         allowNull: true
     },
     productPrice: {
         type: Sequelize.DOUBLE,
         allowNull: false
+    },
+    productURL: {
+        type: Sequelize.STRING(255),
+        allowNull: true
+    },
+    productSPEC: {
+        type: Sequelize.STRING(1000),
+        allowNull: true
     }
 });
 
