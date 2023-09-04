@@ -32,6 +32,6 @@ const Product = sequelize.define('Product', {
         type: Sequelize.STRING(1000),
         allowNull: true
     }
-});
+}, {timestamps: false});
 
 module.exports = Product;

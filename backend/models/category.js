@@ -11,7 +11,7 @@ const Category = sequelize.define('Category', {
     categoryName: {
         type: Sequelize.STRING,
         allowNull: false
-    }},
-);
+    }
+}, {timestamps: false});
 
 module.exports = Category;

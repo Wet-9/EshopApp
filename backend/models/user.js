@@ -6,7 +6,8 @@ const User = sequelize.define('User', {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
-        primaryKey: true
+        primaryKey: true,
+        unique: true
     },
     userFirstName: {
         type: Sequelize.STRING,
@@ -28,6 +29,6 @@ const User = sequelize.define('User', {
         type: Sequelize.STRING,
         allowNull: false
     }
-});
+}, {timestamps: false});
 
 module.exports = User;
