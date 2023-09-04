@@ -24,7 +24,7 @@
           </ion-item>
           <br>
           <ion-button expand="block" [disabled]="loginForm.invalid" (click)="login()">LOGIN</ion-button>
-          <ion-button expand="block" fill="clear" (click)="register()">REGISTER</ion-button>
+          <ion-button type="submit" expand="block" fill="clear" routerLink="/register">REGISTER</ion-button>
         </ion-card-content>
       </ion-card>
     </form>
