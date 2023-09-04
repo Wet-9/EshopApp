@@ -6,10 +6,10 @@ const router = require('express').Router();
 // POST API Route for inserting a user
 router.post('/add_user', (req, res)=>{
     User.create({
-        userFirstName: req.body.userFirstName,
-        userLastName: req.body.userLastName,
-        userEmail: req.body.userEmail,
-        userPassword: req.body.userPassword,
+        email: req.body.email,
+        password: req.body.password,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
         userRole: req.body.userRole
     }).then((result)=>{
         return res.status(200).send(result);

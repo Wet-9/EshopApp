@@ -12,6 +12,6 @@ const SubCategory = sequelize.define('SubCategory', {
         type: Sequelize.STRING,
         allowNull: false
     }
-});
+}, {timestamps: false});
 
 module.exports = SubCategory;

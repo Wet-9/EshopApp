@@ -6,21 +6,22 @@ const User = sequelize.define('User', {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
-        primaryKey: true
+        primaryKey: true,
+        unique: true
     },
-    userFirstName: {
+    email: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    userLastName: {
+    password: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    userEmail: {
+    first_name: {
         type: Sequelize.STRING,
         allowNull: false
     },
-    userPassword: {
+    last_name: {
         type: Sequelize.STRING,
         allowNull: false
     },
@@ -28,6 +29,6 @@ const User = sequelize.define('User', {
         type: Sequelize.STRING,
         allowNull: false
     }
-});
+}, {timestamps: false});
 
 module.exports = User;
