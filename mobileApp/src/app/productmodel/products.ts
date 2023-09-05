@@ -13,6 +13,16 @@ export interface ProductAPI {
   productURL: string;
   productSPEC: string;
 }
+export interface Product {
+  id?: number;
+  productSKU: string;
+  productName: string;
+  productDescription: string;
+  productPrice: number;
+  subCategoryId: number;
+  productURL: string;
+  productSPEC: string;
+}
 
 
 // Api for subcategory

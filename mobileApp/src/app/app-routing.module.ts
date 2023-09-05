@@ -48,7 +48,8 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
-  },  {
+  },
+  {
     path: 'admin-products',
     loadChildren: () => import('./admin-products/admin-products.module').then( m => m.AdminProductsPageModule)
   },
@@ -64,6 +65,18 @@ const routes: Routes = [
     path: 'category-modal',
     loadChildren: () => import('./category-modal/category-modal.module').then( m => m.CategoryModalPageModule)
   },
+  {
+    path: 'edit-category',
+    loadChildren: () => import('./edit-category/edit-category.module').then( m => m.EditCategoryPageModule)
+  },
+  {
+    path: 'edit-category/:id',
+    loadChildren: () => import('./edit-category/edit-category.module').then( m => m.EditCategoryPageModule)
+  },  {
+    path: 'product-modal',
+    loadChildren: () => import('./product-modal/product-modal.module').then( m => m.ProductModalPageModule)
+  },
+
 
 
 ];

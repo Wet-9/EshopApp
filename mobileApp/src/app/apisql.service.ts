@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Iuser } from 'src/app/interfaces/iuser';
 import { UserService } from 'src/app/services/user.service';
 import { Category } from 'src/app/interfaces/Category';
-import { SubCategory } from './productmodel/products';
+import { SubCategory, SubCategoryAPI, Product, ProductAPI } from './productmodel/products';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -49,5 +49,15 @@ addCategory(category: Category): Observable<Category> {
 addSubCategory(subCategory: SubCategory): Observable<SubCategory> {
   return this.http.post<SubCategory>(`${this.apiUrl}/subcategories/add_subcategory`, subCategory, httpOptions);
 }
+
+deleteSubCategory(subCategory: SubCategoryAPI): Observable<SubCategoryAPI> {
+  return this.http.delete<SubCategoryAPI>(`${this.apiUrl}/subcategories/delete_subcategory/${subCategory.id}`);
+
+}
+
+addProduct(product: Product): Observable<Product> {
+  return this.http.post<Product>(`${this.apiUrl}/products/add_product`, product, httpOptions);
+}
+
 
 }

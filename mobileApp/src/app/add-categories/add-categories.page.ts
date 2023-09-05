@@ -19,6 +19,7 @@ export class AddCategoriesPage implements OnInit {
   subCategories: SubCategoryAPI[] = [];
   subNumber: SubCategoryAPI[] =[] ;
   products: ProductAPI[] = [];
+  showDeleteButtons = false;
   constructor(private modalController: ModalController, private router: Router, private apiService: ApisqlService, private navCtrl: NavController) {}
 
 // Implement APIserive fetch for subcategories 
@@ -49,7 +50,10 @@ export class AddCategoriesPage implements OnInit {
 // route sub id 
   routetoproducts(subCategoryId: number) {
     // Navigate to product layout with the subcategory id
-    this.router.navigate(['/productslayout', subCategoryId]);
+    if (this.showDeleteButtons) {
+      this.toggleDeleteButtons();
+    }
+    this.router.navigate(['/edit-category', subCategoryId]);
   }
 
   async addCategory() {
@@ -75,5 +79,20 @@ export class AddCategoriesPage implements OnInit {
     });
     return await modal.present();
   }
+
+  toggleDeleteButtons() {
+    this.showDeleteButtons = !this.showDeleteButtons;
+  }
+  
+  deleteSubCategory(event: Event, subcategory: SubCategoryAPI) {
+    // prevents click event from bubbling up to parent element (card)
+    event.stopPropagation(); 
+    this.apiService.deleteSubCategory(subcategory).subscribe(() => {
+      console.log('Deleted subcategory:', subcategory.id);
+      // Refresh / remove subcategory from local list
+      this.subCategories = this.subCategories.filter(subCategory => subCategory.id !== subcategory.id);
+    });
+  }
+  
   
 }

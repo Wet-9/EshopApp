@@ -5,9 +5,6 @@ import { ApisqlService } from '../apisql.service';
 import { ProductAPI, SubCategoryAPI } from '../productmodel/products';
 import { NavController } from '@ionic/angular';
 
-
-
-
 @Component({
   selector: 'app-products',
   templateUrl: './products.page.html',

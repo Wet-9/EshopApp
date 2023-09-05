@@ -6,7 +6,7 @@ ion-content {
 
 
   .htitle {
-    font-size: 2em;
+    font-size: 1.5em;
     color: black;
     text-align: center;
   }
@@ -36,16 +36,24 @@ ion-content {
   }
   
 .product-count { 
-  display: flex;
-  align-items: center;
+  // display: flex-box;
+  align-content: center;
+  font-size: medium;
+  // align-items: center;
+  // font-size: 20px;
 }
 
 ion-icon {
-  margin-right: 10px;
+//   margin-right: 10px;
+
+font-size: 1em;
+font-weight: bold;
+text-align: center;
   color: #a2d2ff;
 }
 
 .card-space {
+  font-size: 1em;
   text-align: center;
 }
 
@@ -53,5 +61,16 @@ ion-icon {
     font-size: 14px;
     display: flex;
     margin-bottom: 20;
+    font-weight: bold;
+}
+
+.ion-button[shape=circle] {
+    --border-radius: 50%;
+    width: 56px;
+    height: 56px;
+}
+
+.delete-button{
+    margin-top: 20px;
     font-weight: bold;
 }

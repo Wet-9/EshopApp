@@ -11,7 +11,12 @@
   <form [formGroup]="categoryForm">
     <ion-item>
       <ion-input type="text" formControlName="categoryName"  labelPlacement="stacked" label="Enter a category name" placeholder="Category Name" ></ion-input>
-    </ion-item>
-    <ion-button class="add-cat-button" expand="full" labelPlacement="stacked" (click)="closeModal()" >Add Category</ion-button>
+    <ion-text color="danger" *ngIf="categoryForm.get('categoryName')?.touched && categoryForm.get('categoryName')?.invalid">
+      <ion-label>Category name is required!</ion-label>
+    </ion-text>
+  </ion-item>
+
+
+    <ion-button class="add-cat-button" expand="full" shape="round" (click)="closeModal()" >Add Category</ion-button>
   </form>
 </ion-content>

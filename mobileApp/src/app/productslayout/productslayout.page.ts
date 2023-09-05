@@ -18,7 +18,6 @@ export class ProductslayoutPage implements OnInit {
   //sub name for title
   subCategoryName: string = '';
   
-
   constructor(private apiService: ApisqlService, private router: Router, private route: ActivatedRoute,
     private navCtrl: NavController,) { }
 
@@ -28,7 +27,6 @@ export class ProductslayoutPage implements OnInit {
 
   ngOnInit() {
     this.subCategoryId = Number(this.route.snapshot.paramMap.get('id'));
-    
 
     this.apiService.getProducts().subscribe(data => {
       this.products = data;
@@ -45,8 +43,6 @@ export class ProductslayoutPage implements OnInit {
         }
       }
     });
-    
-
   }
 
   productback() {
