@@ -30,7 +30,20 @@ export class LoginPage implements OnInit {
       next: (result) => {
         localStorage.setItem("currentUser", JSON.stringify(result)); //Store the user data on our browser
         alert('Login was successfully');
-        this.router.navigate(['/tabs/home']);
+
+        // Redirecting based on userType
+        let usertype = localStorage.getItem('currentUser'); 
+        if (usertype) {
+          let role = JSON.parse(usertype);
+          let roletype = role.userRole;
+          if (roletype === 'ADMIN'){
+            this.router.navigate(['/nadmin/admin']);
+            console.log('is Admin');
+          } else {
+            this.router.navigate(['/tabs/home']);
+            console.log('is not admin')
+          }
+        }
       },
       error: (err) => {
         alert(err.error);

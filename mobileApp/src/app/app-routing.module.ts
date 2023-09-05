@@ -82,8 +82,14 @@ const routes: Routes = [
     path: 'product-modal',
     loadChildren: () => import('./product-modal/product-modal.module').then( m => m.ProductModalPageModule)
   },
-
-
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
+  },
+  {
+    path: 'nadmin',
+    loadChildren: () => import('./admin-navbar/admin-navbar.module').then( m => m.AdminNavbarPageModule)
+  },
 
 ];
 @NgModule({
