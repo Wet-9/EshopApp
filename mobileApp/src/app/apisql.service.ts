@@ -1,8 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Iuser } from 'src/app/interfaces/iuser';
 import { UserService } from 'src/app/services/user.service';
+import { Category } from 'src/app/interfaces/Category';
+import { SubCategory, SubCategoryAPI, Product, ProductAPI } from './productmodel/products';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
+}
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +20,7 @@ export class ApisqlService {
   //Import GOOGLE CLOUD API
   ///products/get_products
   private apiUrl = 'https://ecom-397716.uc.r.appspot.com';
+  
   user!:Iuser;
 
   constructor(private http: HttpClient, private userService: UserService) { 
@@ -44,4 +53,24 @@ getUser(userId: number): Observable<any> {
 }
 
 
+addCategory(category: Category): Observable<Category> {
+  return this.http.post<Category>(`${this.apiUrl}/categories/add_category`, category, httpOptions);
+}
+
+addSubCategory(subCategory: SubCategory): Observable<SubCategory> {
+  return this.http.post<SubCategory>(`${this.apiUrl}/subcategories/add_subcategory`, subCategory, httpOptions);
+}
+
+deleteSubCategory(subCategory: SubCategoryAPI): Observable<SubCategoryAPI> {
+  return this.http.delete<SubCategoryAPI>(`${this.apiUrl}/subcategories/delete_subcategory/${subCategory.id}`);
+
+}
+
+addProduct(product: Product): Observable<Product> {
+  return this.http.post<Product>(`${this.apiUrl}/products/add_product`, product, httpOptions);
+}
+
+deleteProduct(product: ProductAPI): Observable<ProductAPI> {
+  return this.http.delete<ProductAPI>(`${this.apiUrl}/products/delete_product/${product.id}`);
+}
 }

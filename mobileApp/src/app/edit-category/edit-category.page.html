@@ -1,0 +1,50 @@
+
+<ion-header class="top-container">
+  <ion-buttons>
+    <ion-button (click)="productback()" class="backbutton">
+      <ion-icon class="backarrow" name="arrow-back"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-toolbar>
+    <ion-title class="subname">
+      {{ subCategoryName }}
+    </ion-title>
+
+    <ion-buttons slot="primary">
+
+      <ion-button (click)="addProduct()">
+        <ion-icon slot="icon-only" name="add-outline" ></ion-icon>
+      </ion-button>
+        <ion-button>
+          <ion-icon slot="" name="create-outline"></ion-icon>
+        </ion-button>
+      <ion-button (click)="toggleDeleteButtons()">
+        <ion-icon slot="" name="trash-outline"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="product-grid">
+    <ion-row>
+      <ion-col size="6" *ngFor="let product of filteredProducts">
+        <ion-card class="product-card" (click)="navigateToProduct(product.id)">
+          <ion-card-content class="product-card-content">
+            <div class="image-container">
+              <img [src]="product?.productURL" alt="Product Image" class="product-image"/>
+            </div>
+            <ion-card-title class="product-title">
+              {{ product.productName }}
+              <ion-button class="delete-button" color="danger" *ngIf="showDeleteButtons" (click)="deleteProduct($event, product)">Delete</ion-button>
+            </ion-card-title>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+

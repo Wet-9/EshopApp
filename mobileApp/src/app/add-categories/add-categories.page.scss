@@ -1,0 +1,76 @@
+
+
+ion-content {
+    --background: #F1F1F1;
+  }
+
+
+  .htitle {
+    font-size: 1.5em;
+    color: black;
+    text-align: center;
+  }
+  
+  ion-card {
+    background-color: #ffc8dd;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+  
+    &:hover {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+  }
+  
+  ion-card-title {
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  ion-card-content {
+    text-align: center;
+  }
+  
+  ion-grid {
+    padding: 5px;
+  }
+  
+.product-count { 
+  // display: flex-box;
+  align-content: center;
+  font-size: medium;
+  // align-items: center;
+  // font-size: 20px;
+}
+
+ion-icon {
+//   margin-right: 10px;
+
+font-size: 1em;
+font-weight: bold;
+text-align: center;
+  color: #a2d2ff;
+}
+
+.card-space {
+  font-size: 1em;
+  text-align: center;
+}
+
+.add-button {
+    font-size: 14px;
+    display: flex;
+    margin-bottom: 20;
+    font-weight: bold;
+}
+
+.ion-button[shape=circle] {
+    --border-radius: 50%;
+    width: 56px;
+    height: 56px;
+}
+
+.delete-button{
+    margin-top: 20px;
+    font-weight: bold;
+}

@@ -1,22 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApisqlService } from '../apisql.service';
-
-import { ProductAPI, SubCategoryAPI } from '../productmodel/products';
 import { NavController } from '@ionic/angular';
+import { ApisqlService } from '../apisql.service';
+import { ProductAPI, SubCategoryAPI } from '../productmodel/products';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.page.html',
-  styleUrls: ['./products.page.scss'],
+  selector: 'app-add-products',
+  templateUrl: './add-products.page.html',
+  styleUrls: ['./add-products.page.scss'],
 })
-export class ProductsPage implements OnInit {
+export class AddProductsPage implements OnInit {
 
   subCategories: SubCategoryAPI[] = [];
   subNumber: SubCategoryAPI[] =[] ;
   products: ProductAPI[] = [];
   constructor(private router: Router, private apiService: ApisqlService, private navCtrl: NavController) {}
-
 
 // Implement APIserive fetch for subcategories 
   ngOnInit() {
@@ -38,7 +36,6 @@ export class ProductsPage implements OnInit {
           }
           //store count
           this.subCategories[i].productCount = count;
-          
         }
       });
     });
@@ -48,6 +45,13 @@ export class ProductsPage implements OnInit {
   routetoproducts(subCategoryId: number) {
     // Navigate to product layout with the subcategory id
     this.router.navigate(['/productslayout', subCategoryId]);
+  }
+
+  addCategory(){
+
+  }
+  editCategory(){
+
   }
 
 }

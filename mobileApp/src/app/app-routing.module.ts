@@ -52,10 +52,36 @@ const routes: Routes = [
   {
     path: 'admin-products',
     loadChildren: () => import('./admin-products/admin-products.module').then( m => m.AdminProductsPageModule)
-  },  {
+  },
+  {
     path: 'payment',
     loadChildren: () => import('./payment/payment.module').then( m => m.PaymentPageModule)
-  }
+  
+  },
+  {
+    path: 'add-products',
+    loadChildren: () => import('./add-products/add-products.module').then( m => m.AddProductsPageModule)
+  },
+  {
+    path: 'add-categories',
+    loadChildren: () => import('./add-categories/add-categories.module').then( m => m.AddCategoriesPageModule)
+  },
+  {
+    path: 'category-modal',
+    loadChildren: () => import('./category-modal/category-modal.module').then( m => m.CategoryModalPageModule)
+  },
+  {
+    path: 'edit-category',
+    loadChildren: () => import('./edit-category/edit-category.module').then( m => m.EditCategoryPageModule)
+  },
+  {
+    path: 'edit-category/:id',
+    loadChildren: () => import('./edit-category/edit-category.module').then( m => m.EditCategoryPageModule)
+  },
+  {
+    path: 'product-modal',
+    loadChildren: () => import('./product-modal/product-modal.module').then( m => m.ProductModalPageModule)
+  },
 
 
 
