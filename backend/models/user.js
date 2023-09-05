@@ -11,7 +11,8 @@ const User = sequelize.define('User', {
     },
     email: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     password: {
         type: Sequelize.STRING,
@@ -28,6 +29,11 @@ const User = sequelize.define('User', {
     userRole: {
         type: Sequelize.STRING,
         allowNull: false
+    },
+    cart: {
+        type: Sequelize.JSONB,
+        allowNull: true,
+        defaultValue: []
     }
 }, {timestamps: false});
 

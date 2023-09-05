@@ -43,6 +43,8 @@ export class CheckoutPage implements OnInit {
   
   updateTotalPrice() {
     this.cartPrice = this.cartService.getTotalPrice();
+    this.apiService.updateUserCart(this.cartItems).subscribe();
+
   }
   
 

@@ -18,6 +18,26 @@ router.post('/add_user', (req, res)=>{
     });
 });
 
+router.put('/update_cart/:id', (req, res) => {
+    const cart = req.body.cart;
+    User.findByPk(req.params.id)
+    .then(user => {
+        if (!user) {
+            return res.status(404).send({ message: 'User not found' });
+        }
+        user.update({
+            cart: cart
+        }).then(updatedUser => {
+            return res.status(200).send(updatedUser);
+        }).catch(err => {
+            return res.status(500).send(err);
+        });
+    })
+    .catch(err => {
+        return res.status(500).send(err);
+    });
+});
+
 // GET API Route for getting all users
 router.get('/get_users', (req, res)=>{
     User.findAll().then((result)=>{
