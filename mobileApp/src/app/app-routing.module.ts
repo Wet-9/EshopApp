@@ -52,6 +52,18 @@ const routes: Routes = [
     path: 'admin-products',
     loadChildren: () => import('./admin-products/admin-products.module').then( m => m.AdminProductsPageModule)
   },
+  {
+    path: 'add-products',
+    loadChildren: () => import('./add-products/add-products.module').then( m => m.AddProductsPageModule)
+  },
+  {
+    path: 'add-categories',
+    loadChildren: () => import('./add-categories/add-categories.module').then( m => m.AddCategoriesPageModule)
+  },
+  {
+    path: 'category-modal',
+    loadChildren: () => import('./category-modal/category-modal.module').then( m => m.CategoryModalPageModule)
+  },
 
 
 ];

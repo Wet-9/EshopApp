@@ -22,7 +22,11 @@ export interface SubCategoryAPI {
   productCount?: number;
 }
 
-
+export interface SubCategory {
+  id?: number;
+  subCategoryName: string;
+  categoryId: number;
+}
 
 
 // (Hard Coded Mock Example)

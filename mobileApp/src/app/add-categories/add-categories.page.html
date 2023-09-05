@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="htitle">
+      <ion-icon name="basket"></ion-icon> Categories 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-justify-content-end">
+      <ion-col size="5" class="ion-text-right"> 
+        <ion-button class="add-button" size="default" (click)="addCategory()">
+          <ion-icon  name="add" slot="start" shape="round" aria-hidden="true"></ion-icon>
+          Add Category
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6" *ngFor="let subCategory of subCategories">
+        <ion-card (click)="routetoproducts(subCategory.id)">
+          <ion-card-content>
+            <ion-card-title class="card-space">
+              <div class="card-space">{{ subCategory.subCategoryName }}</div>
+              <br>
+              <div class="product-count">
+                <ion-icon name="pricetag"></ion-icon>
+                <div class="card-space">{{ subCategory.productCount }} Items</div>
+              </div>
+            </ion-card-title>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

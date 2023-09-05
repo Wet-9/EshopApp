@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-title>Add Category</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="categoryForm">
+    <ion-item>
+      <ion-input type="text" formControlName="categoryName"  labelPlacement="stacked" label="Enter a category name" placeholder="Category Name" ></ion-input>
+    </ion-item>
+    <ion-button class="add-cat-button" expand="full" labelPlacement="stacked" (click)="closeModal()" >Add Category</ion-button>
+  </form>
+</ion-content>

@@ -1,0 +1,57 @@
+
+
+ion-content {
+    --background: #F1F1F1;
+  }
+
+
+  .htitle {
+    font-size: 2em;
+    color: black;
+    text-align: center;
+  }
+  
+  ion-card {
+    background-color: #ffc8dd;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+  
+    &:hover {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+  }
+  
+  ion-card-title {
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  ion-card-content {
+    text-align: center;
+  }
+  
+  ion-grid {
+    padding: 5px;
+  }
+  
+.product-count { 
+  display: flex;
+  align-items: center;
+}
+
+ion-icon {
+  margin-right: 10px;
+  color: #a2d2ff;
+}
+
+.card-space {
+  text-align: center;
+}
+
+.add-button {
+    font-size: 14px;
+    display: flex;
+    margin-bottom: 20;
+    font-weight: bold;
+}
