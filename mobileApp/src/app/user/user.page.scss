@@ -1,0 +1,31 @@
+ion-content {
+    --ion-background-color: #f9f9f9;
+  }
+  
+  .title {
+    font-size: 1.8em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: black;
+  }
+  
+  ion-card {
+    margin: 15px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #bde0fe;
+  }
+  
+  ion-card-title {
+    font-size: 1.2em;
+    font-weight: 600;
+  }
+  
+  ion-row {
+    justify-content: space-between;
+  }
+  
+  .sign-out {
+    margin: 16px;
+    font-size: 16px;
+  }

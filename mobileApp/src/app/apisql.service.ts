@@ -34,6 +34,14 @@ updateUserCart(cart: any[]): Observable<any[]> {
 }
 
 // Fetch from cart to fix reload problem: 
+getUserCart(userId: number): Observable<any> {
+  return this.http.get<any>(`${this.apiUrl}/users/get_cart/${userId}`);
+}
+
+// Get user data instead of cart 
+getUser(userId: number): Observable<any> {
+  return this.http.get<any>(`${this.apiUrl}/users/get_user/${userId}`);
+}
 
 
 }
