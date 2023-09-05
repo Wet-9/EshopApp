@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,7 @@ import { NavController } from '@ionic/angular';
 export class RegisterPage implements OnInit {
   registerForm: FormGroup;
   userRole!: string;
-  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router, private navCtrl: NavController){
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router, private navCtrl: NavController, public toastController: ToastController){
     this.registerForm = formBuilder.group({
       first_name: ['', [Validators.required]],
       last_name: ['', [Validators.required]],
@@ -20,6 +21,22 @@ export class RegisterPage implements OnInit {
       password: ['', [Validators.required]],
     });
   }
+
+// Notifcation for register Success
+  async successToast(message: string) {
+    const success = await this.toastController.create({
+      message: message,
+      duration: 4500,
+      icon: 'checkbox',
+      position: 'top',
+      color: 'danger'
+    });
+    success.present();
+  }
+
+  // test(){
+  //   this.successToast('User was created successfully. Please Login Again');
+  // }
 
   ngOnInit() {
   }
@@ -37,8 +54,9 @@ export class RegisterPage implements OnInit {
     this.userService.registerUser(registrationData).subscribe({
       next: (result) => {
         console.log(result);
-        alert('User was created successfully');
-        this.router.navigate(['/tabs/home']);
+        // alert('User was created successfully');
+        this.successToast('User was created successfully. Please Login Again');
+        this.router.navigate(['/login']);
       },
       error: (err) => {
         console.log(err);

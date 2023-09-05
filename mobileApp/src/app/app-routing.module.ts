@@ -48,10 +48,15 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
-  },  {
+  },
+  {
     path: 'admin-products',
     loadChildren: () => import('./admin-products/admin-products.module').then( m => m.AdminProductsPageModule)
-  },
+  },  {
+    path: 'payment',
+    loadChildren: () => import('./payment/payment.module').then( m => m.PaymentPageModule)
+  }
+
 
 
 ];

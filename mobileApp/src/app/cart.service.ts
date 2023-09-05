@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ProductAPI } from './productmodel/products'; //products template temp***
-
+import { EventEmitter } from '@angular/core'; // 
 export interface CartItem {
   product: ProductAPI;
   quantity: number;
@@ -14,6 +14,8 @@ export class CartService {
 
   items: CartItem[] = []; // Items array to add to cart
  
+  // EventEmitter works - Forces update in products-temp to update total cost at checkout. 
+  cartUpdated = new EventEmitter<void>();
 
 // Add item to cart function
 addToCart(product: ProductAPI) {
@@ -23,6 +25,7 @@ addToCart(product: ProductAPI) {
   } else {
     this.items.push({ product, quantity: 1 });
   }
+  this.cartUpdated.emit();
 }
 
 
@@ -40,6 +43,7 @@ removeFromCart(product: ProductAPI) {
       item.quantity -= 1;
     }
   }
+  this.cartUpdated.emit();
 }
 
 // Get Items

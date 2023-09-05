@@ -12,6 +12,7 @@ ion-tab-bar {
     right: 0; //added to fix positioning 
     margin: 0 auto;
     height: 55px;
+    margin-bottom: env(safe-area-inset-top);
   }
   
   // Icon Properties
