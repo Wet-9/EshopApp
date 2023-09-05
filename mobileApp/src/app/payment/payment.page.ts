@@ -3,6 +3,8 @@ import { CartService, CartItem } from '../cart.service'; // Export From Service
 import { ProductAPI } from '../productmodel/products';
 import { ApisqlService } from '../apisql.service';
 import { Router } from '@angular/router';
+import { jsPDF } from 'jspdf'; // Useful
+
 
 
 @Component({
@@ -12,11 +14,19 @@ import { Router } from '@angular/router';
 })
 export class PaymentPage implements OnInit {
 
+cart: any[] = [];
+
   constructor(public cartService: CartService, private apiService: ApisqlService, private router: Router) { }
 
 
   downloadInvoice() {
-    console.log('test');
+  const doc = new jsPDF();
+
+  doc.setFontSize(22);
+  doc.text('Invoice', 10, 10);
+
+  // Download
+  doc.save('Invoice.pdf');
   }
 
   returnHome() {
@@ -27,4 +37,6 @@ export class PaymentPage implements OnInit {
   ngOnInit() {
   }
 
+
+  
 }
