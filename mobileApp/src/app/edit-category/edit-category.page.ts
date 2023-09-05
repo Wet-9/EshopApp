@@ -90,13 +90,18 @@ export class EditCategoryPage implements OnInit {
   deleteProduct(event: Event, products: ProductAPI) {
     // prevents click event from bubbling up to parent element (card)
     event.stopPropagation(); 
-    // this.apiService.deleteSubCategory(subcategory).subscribe(() => {
-    //   console.log('Deleted subcategory:', subcategory.id);
-    //   // Refresh / remove subcategory from local list
-    //   this.subCategories = this.subCategories.filter(subCategory => subCategory.id !== subcategory.id);
-    // });
+    this.apiService.deleteProduct(products).subscribe(() => {
+      console.log('Deleted product:', products.id);
+      // Refresh / remove product from local list
+      this.products = this.products.filter(product => product.id !== products.id);
+      this.ngOnInit();
+    });
   }
 
+  /**
+   * Todo: update category when user adds a new product
+   * update page when delete product
+   */
   productback() {
     if (this.showDeleteButtons) {
       this.toggleDeleteButtons();

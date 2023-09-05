@@ -59,5 +59,7 @@ addProduct(product: Product): Observable<Product> {
   return this.http.post<Product>(`${this.apiUrl}/products/add_product`, product, httpOptions);
 }
 
-
+deleteProduct(product: ProductAPI): Observable<ProductAPI> {
+  return this.http.delete<ProductAPI>(`${this.apiUrl}/products/delete_product/${product.id}`);
+}
 }
