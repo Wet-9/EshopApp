@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { NavController, Platform } from '@ionic/angular';
 import { ApisqlService } from '../apisql.service';
 import { ProductAPI, SubCategoryAPI, SubCategory } from '../productmodel/products';
 
@@ -20,7 +20,20 @@ export class AddCategoriesPage implements OnInit {
   subNumber: SubCategoryAPI[] =[] ;
   products: ProductAPI[] = [];
   showDeleteButtons = false;
-  constructor(private modalController: ModalController, private router: Router, private apiService: ApisqlService, private navCtrl: NavController) {}
+  constructor(private modalController: ModalController, private router: Router, private apiService: ApisqlService, private navCtrl: NavController,
+    private platform: Platform) {
+      this.platform.backButton.subscribeWithPriority(10, () => {
+        this.refreshData();
+      });
+    }
+  // refresh data when back button is pressed
+  refreshData() {
+    this.ngOnInit();
+  }
+
+  ionViewWillEnter() {
+    this.ngOnInit();
+  }
 
 // Implement APIserive fetch for subcategories 
   ngOnInit() {

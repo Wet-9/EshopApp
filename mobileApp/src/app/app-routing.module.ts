@@ -89,7 +89,11 @@ const routes: Routes = [
   {
     path: 'nadmin',
     loadChildren: () => import('./admin-navbar/admin-navbar.module').then( m => m.AdminNavbarPageModule)
+  },  {
+    path: 'edit-category-modal',
+    loadChildren: () => import('./edit-category-modal/edit-category-modal.module').then( m => m.EditCategoryModalPageModule)
   },
+
 
 ];
 @NgModule({

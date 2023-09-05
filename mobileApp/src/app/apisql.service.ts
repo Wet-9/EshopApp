@@ -61,6 +61,10 @@ addSubCategory(subCategory: SubCategory): Observable<SubCategory> {
   return this.http.post<SubCategory>(`${this.apiUrl}/subcategories/add_subcategory`, subCategory, httpOptions);
 }
 
+updateSubCategory(subCategory: SubCategoryAPI): Observable<SubCategoryAPI> {
+  return this.http.patch<SubCategoryAPI>(`${this.apiUrl}/subcategories/update_subcategory/${subCategory.id}`, subCategory, httpOptions);
+}
+
 deleteSubCategory(subCategory: SubCategoryAPI): Observable<SubCategoryAPI> {
   return this.http.delete<SubCategoryAPI>(`${this.apiUrl}/subcategories/delete_subcategory/${subCategory.id}`);
 

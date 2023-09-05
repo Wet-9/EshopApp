@@ -5,6 +5,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { ProductModalPage } from '../product-modal/product-modal.page';
+import { EditCategoryModalPage } from '../edit-category-modal/edit-category-modal.page';
+import { SubCategory } from '../productmodel/products';
 
 @Component({
   selector: 'app-edit-category',
@@ -96,6 +98,31 @@ export class EditCategoryPage implements OnInit {
       this.products = this.products.filter(product => product.id !== products.id);
       this.ngOnInit();
     });
+  }
+
+  async editCategoryName(){
+    const modal = await this.modalController.create({
+      component: EditCategoryModalPage
+    });
+    modal.onDidDismiss().then((categoryName) => {
+      if (categoryName !== null && categoryName.data !== undefined) {
+        console.log('Category name modal:', categoryName.data);
+
+        const newCategory = {
+          id: this.subCategoryId,
+          subCategoryName: categoryName.data.categoryName,
+          categoryId: 1,
+        }
+
+        console.log(categoryName.data.categoryName);  
+
+        this.apiService.updateSubCategory(newCategory).subscribe(subCategory => {
+          console.log('Added subcategory:', subCategory);
+          this.ngOnInit();
+        });
+      }
+    });
+    return await modal.present();
   }
 
   /**
