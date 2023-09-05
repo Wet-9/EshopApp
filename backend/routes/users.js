@@ -38,6 +38,26 @@ router.put('/update_cart/:id', (req, res) => {
     });
 });
 
+// Get Cart ******TEMP SOLUTION***********************************************
+
+router.get('/get_cart', (req, res)=>{
+    User.findAll().then((result)=>{
+        return res.status(200).send(result);
+    }).catch((err)=>{
+        return res.status(500).send(err);
+    });
+});
+
+router.get('get_cart/:id', (req, res)=>{
+    User.findByPk(req.params.id).then((result)=>{
+        return res.status(200).send(result);
+    }).catch((err)=>{
+        return res.status(500).send(err);
+    });
+});
+
+// ****************************************************************************
+
 // GET API Route for getting all users
 router.get('/get_users', (req, res)=>{
     User.findAll().then((result)=>{

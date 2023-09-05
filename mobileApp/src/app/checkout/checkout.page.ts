@@ -57,10 +57,23 @@ export class CheckoutPage implements OnInit {
     this.cdr.detectChanges();
   }
   
-// payment 
+// Now a confirm Button
+// When press > Saves JSON file > Refresh Cart > 
 goToPayment() {
-  this.router.navigate(['/payment']);
+  this.apiService.updateUserCart(this.cartItems).subscribe(
+    response => {
+      console.log("Cart updated successfully", response);
+      this.router.navigate(['/payment']);
+    },
+    error => {
+      console.log("Error w/ Cart Update", error);
+    }
+  );
 }
+
+// Fetch cart fix reload problem 
+
+
 
   
 }

@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content style="--padding-bottom: 100px;">
   
   <div *ngIf="cartItems.length > 0; else emptyCart">
     
@@ -41,13 +41,17 @@
     
     <!-- Checkout Button -->
     <ion-button expand="full" color="primary" (click)="goToPayment()">
-      Payment
+      Confirm
     </ion-button>
 
   </div>
   
   <ng-template #emptyCart>
-    <p>Your cart is empty.</p>
+    <div class="empty-cart-container">
+      <ion-icon name="cart-outline" class="empty-cart-icon"></ion-icon>
+      <p class="empty-cart-text">Your cart is empty.</p>
+    </div>
   </ng-template>
+  
 
 </ion-content>

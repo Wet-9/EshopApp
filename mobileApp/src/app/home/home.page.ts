@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,12 @@ import { NavController } from '@ionic/angular';
 })
 export class HomePage implements OnInit {
 
-  constructor(private navCtrl: NavController) {}
+// var
+
+  todayProduct: any;
+  allProducts: any[] = [];
+
+  constructor(private navCtrl: NavController, private httpClient: HttpClient) {}
 
 
   // Redirect to Home Page when icon is clicked
@@ -17,6 +23,26 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
+// Fetching
+    this.fetchProducts().subscribe(
+      (products) => {
+        this.allProducts = products;
+        this.getRandomProduct();
+      },
+      (error) => {
+        console.error('Failed to fetch products:', error);
+      }
+    );
+
+  }
+
+  fetchProducts() {
+    return this.httpClient.get<any[]>('https://ecom-397716.uc.r.appspot.com/products/get_products');
+  }
+// Random Generator
+  getRandomProduct() {
+    const randomIndex = Math.floor(Math.random() * this.allProducts.length);
+    this.todayProduct = this.allProducts[randomIndex];
   }
 
 }

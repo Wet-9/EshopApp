@@ -14,6 +14,16 @@ export class PaymentPage implements OnInit {
 
   constructor(public cartService: CartService, private apiService: ApisqlService, private router: Router) { }
 
+
+  downloadInvoice() {
+    console.log('test');
+  }
+
+  returnHome() {
+    this.router.navigate(['/tabs/home']);
+  }
+
+
   ngOnInit() {
   }
 

@@ -17,3 +17,22 @@ ion-card {
   .title {
     text-align: center;
   }
+
+ // Empty Cart
+
+ .empty-cart-container {
+  text-align: center;
+  padding-top: 250px;
+  color: #8e8e8e;
+}
+
+.empty-cart-icon {
+  font-size: 64px;
+  margin-bottom: 20px;
+}
+
+.empty-cart-text {
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 1.2px;
+}
