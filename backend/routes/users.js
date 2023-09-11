@@ -18,12 +18,32 @@ router.post('/add_user', (req, res)=>{
     });
 });
 
-router.put('/update_cart/:id', (req, res) => {
+// router.put('/update_cart/:id', (req, res) => {
+//     const cart = req.body.cart;
+//     User.findByPk(req.params.id)
+//     .then(user => {
+//         if (!user) {
+//             return res.status(404).send('No User Found with the given ID');
+//         }
+//         user.update({
+//             cart: cart
+//         }).then(updatedUser => {
+//             return res.status(200).send(updatedUser);
+//         }).catch(err => {
+//             return res.status(500).send(err);
+//         });
+//     })
+//     .catch(err => {
+//         return res.status(500).send(err);
+//     });
+// });
+
+router.patch('/update_cart/:id', (req, res) => {
     const cart = req.body.cart;
     User.findByPk(req.params.id)
     .then(user => {
         if (!user) {
-            return res.status(404).send({ message: 'User not found' });
+            return res.status(404).send('No User Found with the given ID');
         }
         user.update({
             cart: cart
@@ -84,6 +104,38 @@ router.get('/get_users_by_role/:role', (req, res)=>{
         }
         return res.status(200).send(result);
     }).catch((err)=>{
+        return res.status(500).send(err);
+    });
+});
+
+// PATCH API Route for completing a purchase
+router.patch('/complete_purchase/:id', async (req, res) => {
+    try {
+        const user = await User.findByPk(req.params.id);
+        if (!user) {
+            return res.status(404).send('No User Found with the given ID');
+        }
+        // Combining current purchaseHistory with current cart
+        const updatedPurchaseHistory = [...user.purchaseHistory, ...user.cart];
+
+        // update purchaseHistory & clear cart
+        const updatedUser = await user.update({
+            purchaseHistory: updatedPurchaseHistory,
+            cart: []
+        });
+        return res.status(200).send(updatedUser);
+    } catch (err) {
+        return res.status(500).send(err);
+    }
+});
+
+// GET API Route for getting all users' purchase history
+router.get('/get_users_purchase_history', (req, res) => {
+    User.findAll({
+        attributes: ['id', 'email', 'purchaseHistory']
+    }).then((users) => {
+        return res.status(200).send(users);
+    }).catch((err) => {
         return res.status(500).send(err);
     });
 });

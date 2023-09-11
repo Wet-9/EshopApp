@@ -38,7 +38,7 @@ getsubcategories(): Observable<any[]> {
 updateUserCart(cart: any[]): Observable<any[]> {
   console.log(JSON.stringify(cart, null, 2));
   const body = { cart: cart };
-  return this.http.put<any[]>(`${this.apiUrl}/users/update_cart/${this.user.id}`, body);
+  return this.http.patch<any[]>(`${this.apiUrl}/users/update_cart/${this.user.id}`, body);
 
 }
 

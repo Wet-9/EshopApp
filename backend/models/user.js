@@ -34,6 +34,11 @@ const User = sequelize.define('User', {
         type: Sequelize.JSONB,
         allowNull: true,
         defaultValue: []
+    },
+    purchaseHistory:{
+        type: Sequelize.JSONB,
+        allowNull: true,
+        defaultValue: []
     }
 }, {timestamps: false});
 
