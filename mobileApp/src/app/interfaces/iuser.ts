@@ -5,4 +5,6 @@ export interface Iuser {
     email: string;
     password: string;
     userRole: string;
+    cart: any[];
+    purchaseHistory: any[];
 }

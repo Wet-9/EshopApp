@@ -5,20 +5,18 @@ import { ApisqlService } from '../apisql.service';
 import { Router } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
 
+
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.page.html',
   styleUrls: ['./checkout.page.scss'],
 })
 export class CheckoutPage implements OnInit {
-
+  
   cartItems: CartItem[] = [];
+  cartPrice: number = 0;   // Calculate Cart Price
 
-  // Calculate Cart Price
-  cartPrice: number = 0;
-
-
-  constructor(public cartService: CartService, private apiService: ApisqlService, private router: Router, private cdr: ChangeDetectorRef) { }
+  constructor(public cartService: CartService, private apiService: ApisqlService, private router: Router, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.cartItems = this.cartService.getItems();
@@ -62,6 +60,9 @@ export class CheckoutPage implements OnInit {
 goToPayment() {
   this.apiService.updateUserCart(this.cartItems).subscribe(
     response => {
+      // clear cart upon successful purchase
+      this.cartItems = [];
+      this.cartService.clearCart();
       console.log("Cart updated successfully", response);
       this.router.navigate(['/payment']);
     },
@@ -71,9 +72,4 @@ goToPayment() {
   );
 }
 
-// Fetch cart fix reload problem 
-
-
-
-  
 }

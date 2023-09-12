@@ -77,4 +77,9 @@ addProduct(product: Product): Observable<Product> {
 deleteProduct(product: ProductAPI): Observable<ProductAPI> {
   return this.http.delete<ProductAPI>(`${this.apiUrl}/products/delete_product/${product.id}`);
 }
+
+completePurchase(user: Iuser): Observable<Iuser> {
+  return this.http.patch<Iuser>(`${this.apiUrl}/users/complete_purchase/${user.id}`, httpOptions);
+}
+
 }
