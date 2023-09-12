@@ -65,6 +65,7 @@ goToPayment() {
       this.cartService.clearCart();
       console.log("Cart updated successfully", response);
       this.router.navigate(['/payment']);
+      this.ngOnInit();
     },
     error => {
       console.log("Error w/ Cart Update", error);
