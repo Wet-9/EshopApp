@@ -51,6 +51,7 @@ export class PaymentPage implements OnInit {
     doc.text('Date: ' + date.toLocaleDateString(), 10, 40);
 
     this.tableHeader(doc, yaxis);
+    yaxis += 10;
 
     this.cart.forEach((item, index) => {
       // display details: proudct, price, quantity
