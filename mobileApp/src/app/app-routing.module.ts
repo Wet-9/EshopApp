@@ -93,7 +93,11 @@ const routes: Routes = [
   {
     path: 'edit-category-modal',
     loadChildren: () => import('./edit-category-modal/edit-category-modal.module').then( m => m.EditCategoryModalPageModule)
+  },  {
+    path: 'billing',
+    loadChildren: () => import('./billing/billing.module').then( m => m.BillingPageModule)
   },
+
 
 
 ];

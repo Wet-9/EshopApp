@@ -1,0 +1,75 @@
+<ion-header class="container">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="productback()" class="backbutton">
+        <ion-icon class="backarrow" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="title">
+      MOCK SHIPPING / BILLING Design
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title> Shipping Address </ion-card-title>
+      </ion-card-header>
+    </ion-card>
+    <form [formGroup]="ShippingForm">
+      <ion-card>
+        <ion-card-content>
+          <ion-item>
+            <ion-label position="floating">First Name</ion-label>
+            <ion-input type="text" formControlName="first_name" placeholder="Enter your first name"></ion-input>
+          </ion-item>
+          <div *ngIf="ShippingForm.get('first_name')?.touched && ShippingForm.get('first_name')?.invalid">
+            <ion-label class="error-label">First Name is required</ion-label>
+          </div>
+
+          <ion-item>
+            <ion-label position="floating">Last Name</ion-label>
+            <ion-input type="text" formControlName="last_name" placeholder="Enter your last name"></ion-input>
+          </ion-item>
+          <div *ngIf="ShippingForm.get('last_name')?.touched && ShippingForm.get('last_name')?.invalid">
+            <ion-label class="error-label">Last Name is required</ion-label>
+          </div>
+
+          <ion-item>
+            <ion-label position="floating">Address</ion-label>
+            <ion-input type="text" formControlName="address" placeholder="Enter your address"></ion-input>
+          </ion-item>
+          <div *ngIf="ShippingForm.get('address')?.touched && ShippingForm.get('address')?.invalid">
+            <ion-label class="error-label">Address is required</ion-label>
+          </div>
+
+
+          <ion-item>
+            <ion-label position="floating">City</ion-label>
+            <ion-input type="text" formControlName="city"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Province</ion-label>
+            <ion-input type="text" formControlName="province"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Postal-Code</ion-label>
+            <ion-input type="text" formControlName="postal_code"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Country</ion-label>
+            <ion-input type="text" formControlName="Country"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Number</ion-label>
+            <ion-input type="number" formControlName="Number"></ion-input>
+          </ion-item>
+          <br />
+          <ion-button expand="block" [disabled]="ShippingForm.invalid" (click)="Confirm()">Confirm</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </form>
+  </div>
+</ion-content>

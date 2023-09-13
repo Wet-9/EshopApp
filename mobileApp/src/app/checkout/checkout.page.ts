@@ -4,6 +4,8 @@ import { ProductAPI } from '../productmodel/products';
 import { ApisqlService } from '../apisql.service';
 import { Router } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
+import { UserService } from '../services/user.service';
+import { AlertController } from '@ionic/angular';
 
 
 @Component({
@@ -16,7 +18,8 @@ export class CheckoutPage implements OnInit {
   cartItems: CartItem[] = [];
   cartPrice: number = 0;   // Calculate Cart Price
 
-  constructor(public cartService: CartService, private apiService: ApisqlService, private router: Router, private cdr: ChangeDetectorRef) {}
+  constructor(public cartService: CartService, private apiService: ApisqlService, private router: Router, private cdr: ChangeDetectorRef, private userService: UserService,
+    private alertController: AlertController) {}
 
   ngOnInit() {
     this.cartItems = this.cartService.getItems();
@@ -58,19 +61,35 @@ export class CheckoutPage implements OnInit {
 // Now a confirm Button
 // When press > Saves JSON file > Refresh Cart > 
 goToPayment() {
-  this.apiService.updateUserCart(this.cartItems).subscribe(
-    response => {
-      // clear cart upon successful purchase
-      this.cartItems = [];
-      this.cartService.clearCart();
-      console.log("Cart updated successfully", response);
-      this.router.navigate(['/payment']);
-      this.ngOnInit();
-    },
-    error => {
-      console.log("Error w/ Cart Update", error);
-    }
-  );
+  if (this.userService.isAuthenticated()) {
+    this.apiService.updateUserCart(this.cartItems).subscribe(
+      response => {
+        // clear cart upon successful purchase
+        this.cartItems = [];
+        this.cartService.clearCart();
+        console.log("Cart updated successfully", response);
+        this.router.navigate(['/billing']);
+        this.ngOnInit();
+      },
+      error => {
+        console.log("Error w/ Cart Update", error);
+      }
+    );
+  } else {
+    this.presentAlert();
+    this.router.navigate(['/tabs/login']);
+  }
 }
 
+
+async presentAlert() {
+  const alert = await this.alertController.create({
+    header: 'Account Required',
+    subHeader: 'Please Login',
+    message: 'Or Create an Account',
+    buttons: ['OK'],
+  });
+
+  await alert.present();
+}
 }
