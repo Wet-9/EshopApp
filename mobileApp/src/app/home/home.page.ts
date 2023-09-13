@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -33,7 +34,6 @@ export class HomePage implements OnInit {
         console.error('Failed to fetch products:', error);
       }
     );
-
   }
 
   fetchProducts() {
@@ -44,5 +44,6 @@ export class HomePage implements OnInit {
     const randomIndex = Math.floor(Math.random() * this.allProducts.length);
     this.todayProduct = this.allProducts[randomIndex];
   }
+
 
 }
