@@ -9,15 +9,16 @@
 <ion-content>
   <ion-grid>
     <ion-row>
-      <ion-col size="6" *ngFor="let subCategory of subCategories">
-        <ion-card (click)="routetoproducts(subCategory.id)">
+      <ion-col size="12" *ngFor="let subCategory of subCategories">
+        <!-- 12 max Col so it displays 1 by 1 -->
+        <ion-card (click)="routetoproducts(subCategory.id)" class="elongated-card">
           <ion-card-content>
             <ion-card-title class="card-space">
               <div class="card-space">{{ subCategory.subCategoryName }}</div>
               <br>
               <div class="product-count">
                 <ion-icon name="pricetag"></ion-icon>
-                <div class="card-space">{{ subCategory.productCount }} Items</div>
+                <div class="card-space-text">{{ subCategory.productCount }} Items</div>
               </div>
             </ion-card-title>
           </ion-card-content>

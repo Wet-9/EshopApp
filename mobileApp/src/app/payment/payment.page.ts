@@ -35,6 +35,7 @@ export class PaymentPage implements OnInit {
       (response) => {
         console.log('Purchase completed successfully', response);
         this.cartService.clearCart(); // Clear cart and notify subscribers
+        this.apiService.updateUserCart(this.cartService.getItems()).subscribe();  // Clears Cart
         this.router.navigate(['/tabs/home']);
       },
       (error) => {
@@ -61,6 +62,7 @@ export class PaymentPage implements OnInit {
       // display details: proudct, price, quantity
       doc.setFontSize(10);
       doc.text(item.productName, 10, yaxis);
+      doc.text(item.productSKU, 75, yaxis);
       doc.text('$' + item.productPrice.toFixed(2), 100, yaxis);
       doc.text(String(item.quantity), 150, yaxis);
 
@@ -116,14 +118,15 @@ export class PaymentPage implements OnInit {
     }
 
     this.apiService.getUser(this.userId).subscribe((user) => {
-      const cartPromises = user.cart.map((item: { productId: number; quantity: number }) => {
-        console.log('item id: ', item.productId);
+      const cartPromises = user.cart.map((item: { productId: number; quantity: number, productSKU: string; }) => {
+        console.log('item id: ', item.productId, item.productSKU);
         return this.apiService.getProductById(item.productId)
           .pipe(map((product: ProductAPI) => {
             const cartItem = {
               productName: product.productName,
               productPrice: product.productPrice,
-              quantity: item.quantity
+              quantity: item.quantity,
+              productSKU: product.productSKU
             };
             // Log productName and productPrice for debugging
             // console.log(`Fetched Cart: \n CartItem: ${cartItem.productName} - Price: ${cartItem.productPrice}`);
@@ -153,6 +156,7 @@ export class PaymentPage implements OnInit {
   private tableHeader(doc: any, yaxis: number) {
     doc.setFontSize(12);
     doc.text('Item', 10, yaxis);
+    doc.text('SKU', 75, yaxis);
     doc.text('Price', 100, yaxis);
     doc.text('Quantity', 150, yaxis);
     doc.text('Total', 180, yaxis);
