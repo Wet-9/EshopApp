@@ -7,8 +7,6 @@ export interface ProductAPI {
   productName: string;
   productDescription: string;
   productPrice: number;
-  // createdAt: string;  // Not needed
-  // updatedAt: string;  // Not needed
   subCategoryId: number;
   productURL: string;
   productSPEC: string;

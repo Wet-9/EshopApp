@@ -19,14 +19,19 @@ export class CheckoutPage implements OnInit {
   constructor(public cartService: CartService, private apiService: ApisqlService, private router: Router, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
-    this.cartItems = this.cartService.getItems();
+    this.updateCartItems();
     this.updateTotalPrice();
-    this.cartPrice = this.cartService.getTotalPrice();
     this.cartService.cartUpdated.subscribe(() => {
       this.updateTotalPrice();
+      this.updateCartItems();
     });
     this.updateTotalPrice();
   }
+
+  updateCartItems() {
+    this.cartItems = this.cartService.getItems();
+  }
+
 // Adding sum based on quantity and item
   CalcTotal() {
     this.cartPrice = 0; 
@@ -51,21 +56,39 @@ export class CheckoutPage implements OnInit {
   updateTotalPrice() {
     this.cartPrice = this.cartService.getTotalPrice();
     console.log(this.cartPrice);
-    this.apiService.updateUserCart(this.cartItems).subscribe();
+
+    const cartData = this.cartItems.map(item => ({
+      productId: item.product.id,
+      quantity: item.quantity
+    }));
+
+    // this.apiService.updateUserCart(this.cartItems).subscribe();
+    this.apiService.updateUserCart(cartData).subscribe();
     this.cdr.detectChanges();
   }
   
 // Now a confirm Button
 // When press > Saves JSON file > Refresh Cart > 
 goToPayment() {
-  this.apiService.updateUserCart(this.cartItems).subscribe(
+  const cartData = this.cartItems.map(item => ({
+    productId: item.product.id,
+    quantity: item.quantity
+  }));
+  // this.apiService.updateUserCart(this.cartItems).subscribe(
+  //   response => {
+  //     console.log("Cart updated successfully", response);
+  //     this.router.navigate(['/payment']);
+  //   },
+  //   error => {
+  //     console.log("Error w/ Cart Update", error);
+  //   }
+  //   );
+  // }
+
+  this.apiService.updateUserCart(cartData).subscribe(
     response => {
-      // clear cart upon successful purchase
-      this.cartItems = [];
-      this.cartService.clearCart();
       console.log("Cart updated successfully", response);
       this.router.navigate(['/payment']);
-      this.ngOnInit();
     },
     error => {
       console.log("Error w/ Cart Update", error);

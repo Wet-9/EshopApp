@@ -54,6 +54,7 @@ removeFromCart(product: ProductAPI) {
 // Clear items 
  clearCart() {
   this.items = []; //setting [] resets array
+  this.cartUpdated.emit(); // notifys subscribers that cart has been updated
 }
 
 // Get Quantity 
