@@ -89,12 +89,14 @@ const categories_router = require('./routes/categories');
 const subcategories_router = require('./routes/subcategories');
 const inventory_router = require('./routes/inventories');
 const users_router = require('./routes/users');
+const orders_router = require('./routes/orders');
 
 app.use('/products', products_router);
 app.use('/categories', categories_router);
 app.use('/subcategories', subcategories_router);
 app.use('/inventories', inventory_router);
 app.use('/users', users_router);
+app.use('/orders', orders_router);
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => {

@@ -22,6 +22,12 @@ export interface Product {
   productSPEC: string;
 }
 
+export interface OrderDisplay{
+  orderId: number;
+  orderDate: Date;
+  products: { productName: string; productPrice: number; quantity: number }[];
+  totalCost: number;
+}
 
 // Api for subcategory
 export interface SubCategoryAPI {

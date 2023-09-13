@@ -32,7 +32,7 @@ export class EditCategoryPage implements OnInit {
     if (this.showDeleteButtons) {
       this.toggleDeleteButtons();
     }
-    this.router.navigate(['/product-temp', id]);
+    this.router.navigate(['/edit-product', id]);
   }
 
   ngOnInit() {
@@ -117,7 +117,7 @@ export class EditCategoryPage implements OnInit {
         console.log(categoryName.data.categoryName);  
 
         this.apiService.updateSubCategory(newCategory).subscribe(subCategory => {
-          console.log('Added subcategory:', subCategory);
+          console.log('Edited subcategory:', subCategory);
           this.ngOnInit();
         });
       }

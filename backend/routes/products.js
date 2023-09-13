@@ -48,6 +48,29 @@ router.get('/get_products_by_subcategory/:subcategory', (req, res)=>{
     });
 });
 
+// PUT API Route for updating the Product Attributes
+router.put('/update_product/:id', (req, res) => {
+    Product.findByPk(req.params.id).then(product => {
+        if (!product) {
+            return res.status(404).send('No Product Found with the given ID');
+        }
+
+        product.productSKU = req.body.productSKU || product.productSKU;
+        product.productName = req.body.productName || product.productName;
+        product.productDescription = req.body.productDescription || product.productDescription;
+        product.productPrice = parseFloat(req.body.productPrice) || product.productPrice;
+        product.subCategoryId = parseInt(req.body.subCategoryId) || product.subCategoryId;
+        product.productURL = req.body.productURL || product.productURL;
+        product.productSPEC = req.body.productSPEC || product.productSPEC;
+
+        return product.save();
+    }).then(updatedProduct => {
+        return res.status(200).send(updatedProduct);
+    }).catch(err => {
+        return res.status(500).send(err);
+    });
+});
+
 // PATCH API Route for updating the Product Attributes
 router.patch('/update_product/:id', (req, res)=>{
     Product.findByPk(parseInt(req.params.id)).then((product) =>{

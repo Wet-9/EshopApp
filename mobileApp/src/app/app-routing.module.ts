@@ -93,10 +93,27 @@ const routes: Routes = [
   {
     path: 'edit-category-modal',
     loadChildren: () => import('./edit-category-modal/edit-category-modal.module').then( m => m.EditCategoryModalPageModule)
-  },  {
+  },
+  {
     path: 'billing',
     loadChildren: () => import('./billing/billing.module').then( m => m.BillingPageModule)
   },
+  {
+    path: 'all-orders',
+    loadChildren: () => import('./all-orders/all-orders.module').then( m => m.AllOrdersPageModule)
+  },
+  {
+    path: 'edit-product-modal',
+    loadChildren: () => import('./edit-product-modal/edit-product-modal.module').then( m => m.EditProductModalPageModule)
+  },
+  {
+    path: 'edit-product',
+    loadChildren: () => import('./edit-product/edit-product.module').then( m => m.EditProductPageModule)
+  },
+  {
+    path: 'edit-product/:id',
+    loadChildren: () => import('./edit-product/edit-product.module').then( m => m.EditProductPageModule)
+  }
 
 
 

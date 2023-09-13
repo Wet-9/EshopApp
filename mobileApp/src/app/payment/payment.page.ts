@@ -35,7 +35,7 @@ export class PaymentPage implements OnInit {
       (response) => {
         console.log('Purchase completed successfully', response);
         this.cartService.clearCart(); // Clear cart and notify subscribers
-        this.apiService.updateUserCart(this.cartService.getItems()).subscribe();  // Clears Cart
+        this.apiService.updateUserCart(this.cartService.getItems()).subscribe();
         this.router.navigate(['/tabs/home']);
       },
       (error) => {

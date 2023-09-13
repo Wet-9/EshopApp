@@ -9,22 +9,22 @@ const routes: Routes = [
     component: AdminNavbarPage,
     children: [
       {
+        path: 'orders',
+        loadChildren: () => import('../all-orders/all-orders.module').then(m => m.AllOrdersPageModule)
+      },
+      {
         path: 'addcategories',
         loadChildren: () => import('../add-categories/add-categories.module').then(m => m.AddCategoriesPageModule)
       },
       {
-        path: 'admin',
+        path: 'settings',
         loadChildren: () => import('../admin/admin.module').then(m => m.AdminPageModule)
       },
-      {
-        path: 'editcategories',
-        loadChildren: () => import('../edit-category/edit-category.module').then(m => m.EditCategoryPageModule)
-      }
     ]
   },
   {
     path: '**',
-    redirectTo: 'admin', 
+    redirectTo: 'settings', 
   }
 ];
 

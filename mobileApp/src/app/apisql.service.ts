@@ -68,6 +68,10 @@ updateSubCategory(subCategory: SubCategoryAPI): Observable<SubCategoryAPI> {
   return this.http.patch<SubCategoryAPI>(`${this.apiUrl}/subcategories/update_subcategory/${subCategory.id}`, subCategory, httpOptions);
 }
 
+updateProduct(product: ProductAPI): Observable<ProductAPI> {
+  return this.http.put<ProductAPI>(`${this.apiUrl}/products/update_product/${product.id}`, product, httpOptions);
+}
+
 deleteSubCategory(subCategory: SubCategoryAPI): Observable<SubCategoryAPI> {
   return this.http.delete<SubCategoryAPI>(`${this.apiUrl}/subcategories/delete_subcategory/${subCategory.id}`);
 
@@ -84,5 +88,14 @@ deleteProduct(product: ProductAPI): Observable<ProductAPI> {
 completePurchase(user: Iuser): Observable<Iuser> {
   return this.http.patch<Iuser>(`${this.apiUrl}/users/complete_purchase/${user.id}`, httpOptions);
 }
+
+getOrders(userId: number) {
+  return this.http.get<any[]>(`${this.apiUrl}/orders/get_orders/${userId}`);
+}
+
+getAllOrders() {
+  return this.http.get<any[]>(`${this.apiUrl}/orders/get_orders`);
+}
+
 
 }

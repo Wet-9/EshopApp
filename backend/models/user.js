@@ -30,27 +30,15 @@ const User = sequelize.define('User', {
         type: Sequelize.STRING,
         allowNull: false
     },
-    // cart: {
-    //     type: Sequelize.JSONB,
-    //     allowNull: true,
-    //     defaultValue: []
-    // },
-    // purchaseHistory:{
-    //     type: Sequelize.JSONB,
-    //     allowNull: true,
-    //     defaultValue: []
-    // }
     cart: {
         type: Sequelize.JSON,
         allowNull: true,
         defaultValue: []
-        // defaultValue: '{}'
     },
     purchaseHistory:{
         type: Sequelize.JSON,
         allowNull: true,
-        // defaultValue: []
-        defaultValue: '{}'
+        defaultValue: []
     }
     
 }, {timestamps: false});
