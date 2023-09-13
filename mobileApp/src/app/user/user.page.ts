@@ -5,7 +5,7 @@ import { ApisqlService } from '../apisql.service';
 import { ViewWillEnter } from '@ionic/angular'; // Hopefulyl fix and refresh user page (sql issue)
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
-
+import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-user',
   templateUrl: './user.page.html',
@@ -20,45 +20,66 @@ export class UserPage implements OnInit {
     private userService: UserService) { }
 
 
-  // 
   ngOnInit(): void {
     this.getUserIdFromLocalStorage();
     if (this.userId !== null) {
       this.fetchCart();
     }
   }
-// 
+  
   ionViewWillEnter(): void {
     if (this.userId !== null) {
       this.fetchCart();
     }
   }
 
+/*
+* TODO: Refactor.
+*/
 // Get current user json from local strage 
   getUserIdFromLocalStorage(): void {
     const currentUser = JSON.parse(localStorage.getItem("currentUser") || '{}');
     this.userId = currentUser?.id || null;
   }
 
+  /*
+  * get array of product IDs and quantities. For each product ID, fetch the product from the API.
+  * Construct a new array (cart) based on product id and quantity.
+  * Promise.all() waits for all promises to resolve before returning the new array.
+  * (Necessary because we need to wait for all products to be fetched before we can return the cart.)
+  */
   fetchCart(): void {
     if (this.userId === null) {
       return;
     }
-// Get data from cart: ************ TEMP SOLUTION *******************
-    this.apiService.getUser(this.userId).subscribe(user => {
-      this.cart = user.cart.map((item: { product: { productName: string, productPrice: number }, quantity: number }) => {
-        return {
-          productName: item.product.productName,
-          productPrice: item.product.productPrice,
-          quantity: item.quantity
-        };
+
+    this.apiService.getUser(this.userId).subscribe((user) => {
+      const cartPromises = user.cart.map((item: { productId: number; quantity: number }) => {
+        console.log('item id: ', item.productId);
+        return this.apiService.getProductById(item.productId)
+          .pipe(map((product: ProductAPI) => {
+            const cartItem = {
+              productName: product.productName,
+              productPrice: product.productPrice,
+              quantity: item.quantity
+            };
+  
+            // Log productName and productPrice for debugging
+            // console.log(`Fetched Cart: \n CartItem: ${cartItem.productName} - Price: ${cartItem.productPrice}`);
+  
+            return cartItem;
+          }))
+          .toPromise();
       });
-      
-      console.log(this.cart);  // DEBUG ERRORS 
+  
+      Promise.all(cartPromises).then(cartItems => {
+        this.cart = cartItems;
+        console.log('Fetched Cart: ', this.cart);
+      });
     });
   }
 
-// loguotu 
+
 logout() {
   this.userService.logout();
   this.router.navigate(['tabs/login/']);

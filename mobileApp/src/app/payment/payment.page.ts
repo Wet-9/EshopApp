@@ -7,6 +7,9 @@ import { jsPDF } from 'jspdf'; // Useful
 import { UserService } from 'src/app/services/user.service';
 import { Iuser } from 'src/app/interfaces/iuser';
 
+import { map } from 'rxjs/operators';
+
+
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.page.html',
@@ -31,6 +34,7 @@ export class PaymentPage implements OnInit {
     this.apiService.completePurchase(this.user).subscribe(
       (response) => {
         console.log('Purchase completed successfully', response);
+        this.cartService.clearCart(); // Clear cart and notify subscribers
         this.router.navigate(['/tabs/home']);
       },
       (error) => {
@@ -100,26 +104,38 @@ export class PaymentPage implements OnInit {
     this.userId = currentUser?.id || null;
   }
 
+  /*
+  * get array of product IDs and quantities. For each product ID, fetch the product from the API.
+  * Construct a new array (cart) based on product id and quantity.
+  * Promise.all() waits for all promises to resolve before returning the new array.
+  * (Necessary because we need to wait for all products to be fetched before we can return the cart.)
+  */
   fetchCart(): void {
     if (this.userId === null) {
       return;
     }
 
     this.apiService.getUser(this.userId).subscribe((user) => {
-      this.cart = user.cart.map(
-        (item: {
-          product: { productName: string; productPrice: number };
-          quantity: number;
-        }) => {
-          return {
-            productName: item.product.productName,
-            productPrice: item.product.productPrice,
-            quantity: item.quantity,
-          };
-        }
-      );
-
-      console.log('Cart: ' + this.cart);
+      const cartPromises = user.cart.map((item: { productId: number; quantity: number }) => {
+        console.log('item id: ', item.productId);
+        return this.apiService.getProductById(item.productId)
+          .pipe(map((product: ProductAPI) => {
+            const cartItem = {
+              productName: product.productName,
+              productPrice: product.productPrice,
+              quantity: item.quantity
+            };
+            // Log productName and productPrice for debugging
+            // console.log(`Fetched Cart: \n CartItem: ${cartItem.productName} - Price: ${cartItem.productPrice}`);
+            return cartItem;
+          }))
+          .toPromise();
+      });
+  
+      Promise.all(cartPromises).then(cartItems => {
+        this.cart = cartItems;
+        console.log('Fetched Cart: ', this.cart);
+      });
     });
   }
 

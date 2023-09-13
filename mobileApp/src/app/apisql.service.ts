@@ -31,6 +31,10 @@ export class ApisqlService {
   return this.http.get<any[]>(`${this.apiUrl}/products/get_products`);
 }
 
+getProductById(productId: number): Observable<ProductAPI> {
+  return this.http.get<ProductAPI>(`${this.apiUrl}/products/get_product/${productId}`);
+}
+
 getsubcategories(): Observable<any[]> {
   return this.http.get<any[]>(`${this.apiUrl}/subcategories/get_subcategories`);
 }
@@ -39,7 +43,6 @@ updateUserCart(cart: any[]): Observable<any[]> {
   console.log(JSON.stringify(cart, null, 2));
   const body = { cart: cart };
   return this.http.patch<any[]>(`${this.apiUrl}/users/update_cart/${this.user.id}`, body);
-
 }
 
 // Fetch from cart to fix reload problem: 
