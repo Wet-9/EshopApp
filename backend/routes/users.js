@@ -2,6 +2,7 @@ const { Router } = require('express');
 const User = require('../models/user');
 const Product = require('../models/product');
 const router = require('express').Router();
+const Order = require('../models/order');
 
 // POST API Route for inserting a user
 router.post('/add_user', (req, res)=>{
@@ -109,25 +110,30 @@ router.get('/get_users_by_role/:role', (req, res)=>{
 });
 
 // PATCH API Route for completing a purchase
-router.patch('/complete_purchase/:id', async (req, res) => {
-    try {
-        const user = await User.findByPk(req.params.id);
+router.patch('/complete_purchase/:id', (req, res) => {
+    User.findByPk(req.params.id)
+    .then(user => {
         if (!user) {
             return res.status(404).send('No User Found with the given ID');
         }
-        // Combining current purchaseHistory with current cart
-        const updatedPurchaseHistory = [...user.purchaseHistory, ...user.cart];
-
-        // update purchaseHistory & clear cart
-        const updatedUser = await user.update({
-            purchaseHistory: updatedPurchaseHistory,
-            cart: []
+        return Order.create({
+            userId: user.id,
+            products: user.cart
+        }).then(newOrder => {
+            user.cart = [];
+            return user.save()
+            .then(() => {
+                return res.status(200).send({ user, newOrder });
+            });
         });
-        return res.status(200).send(updatedUser);
-    } catch (err) {
-        return res.status(500).send(err);
-    }
+    })
+    .catch(err => {
+        console.error(err);
+        return res.status(500).send(err.message);
+    });
 });
+
+
 
 // GET API Route for getting all users' purchase history
 router.get('/get_users_purchase_history', (req, res) => {

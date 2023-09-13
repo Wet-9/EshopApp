@@ -1,0 +1,84 @@
+<ion-content>
+  <div class="curve-container">
+    <ion-buttons class="back-button-container">
+      <ion-button (click)="productback()">
+        <ion-icon name="arrow-back" class="backarrow"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-toolbar>
+      <!-- <span class="test-text">{{ product?.productName }}</span> -->
+      <ion-title class="product-name">{{ product?.productName }}</ion-title>
+      <ion-buttons slot="primary">
+          <ion-button (click)="editProduct()" color="dark">
+            <ion-icon slot="" name="create-outline"></ion-icon>
+          </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </div>
+
+  <!-- Product Image -->
+  <div class="image-container">
+    <img [src]="product?.productURL" alt="Product Image" />
+  </div>
+
+<br>
+  <!-- Product Description Card -->
+  <ion-card class="product-card">
+    <ion-card-header>
+      <div class="header-flex">
+        <div class="pSKU">
+          SKU: {{ product?.productSKU }}
+        </div>
+        <div class="Pprice bold-title">
+          $ {{ product?.productPrice }}
+        </div>
+      </div>
+    </ion-card-header>
+    <ion-card-content>
+      <p class="Pdescription">{{ product?.productDescription }}</p>  <!-- Display description here -->
+    </ion-card-content>
+  </ion-card>
+
+
+  <div class="Spec">
+   <p class="spec-title">
+    Specifications:
+   </p>
+    <p class="spec-desc">
+     {{ product?.productSPEC }}
+    </p>
+    </div>
+
+  <!-- Quantity Show -->
+  <!-- <ion-card class="quantity-card">
+    <ion-card-content class="quantity-controls">
+      <ion-button (click)="removeitem()" class="quantity-button">
+        <ion-icon name="remove-circle-outline"></ion-icon>
+      </ion-button>
+
+      <div class="quantity-number">
+        {{ cartService.getQuantity(product?.id || 0) }}
+      </div>
+
+      <ion-button (click)="additem()" class="quantity-button">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-card-content>
+
+  </ion-card>
+  <div class="action-container"> -->
+<!-- Favourite -->
+  <!-- <div class="favorite-container" (click)="toggleFavorite()">
+    <div class="favorite-button">
+      <ion-icon name="heart" class="favorite-icon"></ion-icon>
+    </div>
+  </div> -->
+  <!-- Add to Cart -->
+  <!-- <div class="buy-now-container" (click)="goToCheckout()">
+    <div class="buy-now-button">
+      <ion-icon name="cart" class="buy-now-icon"></ion-icon>
+      <div class="buy-now-text">Buy Now</div>
+    </div>
+  </div> -->
+<!-- </div> -->
+</ion-content>

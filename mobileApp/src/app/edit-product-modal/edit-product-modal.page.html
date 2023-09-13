@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-title>Edit Product</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="productForm">
+    
+    <!-- <ion-item>
+      <ion-label color="danger">
+        SKU touched: {{ productForm.get('productSKU')?.touched }}
+        SKU invalid: {{ productForm.get('productSKU')?.invalid }}
+      </ion-label>
+      <ion-input type="text" formControlName="productSKU" placeholder="Product SKU"></ion-input>
+    </ion-item> -->
+    
+
+    <ion-item>
+      <ion-input type="text" formControlName="productSKU" labelPlacement="stacked" placeholder="Product SKU"></ion-input>
+      <ion-text color="danger" *ngIf="productForm.get('productSKU')?.touched && productForm.get('productSKU')?.invalid">
+        <ion-label>SKU is required!</ion-label>
+      </ion-text>
+      
+    </ion-item>
+    
+    <ion-item>
+      <ion-input type="text" formControlName="productName" labelPlacement="stacked" placeholder="Product Name"></ion-input>
+      <ion-text color="danger" *ngIf="productForm.get('productName')?.touched && productForm.get('productName')?.invalid">
+        <ion-label>Product name is required!</ion-label>
+      </ion-text>
+    </ion-item>
+    
+    <!-- <ion-item>
+      <ion-input type="text" formControlName="productDescription" placeholder="Product Description"></ion-input>
+    </ion-item> -->
+
+    <ion-item>
+        <textarea class="white-background" formControlName="productDescription" placeholder="Product Description" rows="4"></textarea>
+    </ion-item>
+    
+    
+    <ion-item>
+      <ion-input type="number" formControlName="productPrice" placeholder="Product Price"></ion-input>
+      <ion-text color="danger" *ngIf="productForm.get('productPrice')?.touched && productForm.get('productPrice')?.invalid">
+      <ion-label>  Product price is required!</ion-label>
+      </ion-text>
+    </ion-item>
+    
+    <ion-item>
+      <ion-input type="text" formControlName="productURL" placeholder="Product Image URL"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-input type="text" formControlName="productSPEC" placeholder="Product Specifications"></ion-input>
+    </ion-item>
+    
+    <ion-button class="add-cat-button" expand="full" shape="round" (click)="closeModal()" [disabled]="!productForm.valid">Add Product</ion-button>
+
+  </form>
+</ion-content>

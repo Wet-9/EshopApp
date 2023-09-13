@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="secondary">
-    <ion-title style="text-align: center;">Profile</ion-title>
+    <ion-title style="text-align: center;">Orders</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,6 +10,7 @@
     <ion-card-header>
       <ion-card-title>Order #{{ order.orderId }}</ion-card-title>
       <ion-card-subtitle>Date: {{ order.orderDate|date:'shortDate' }}</ion-card-subtitle>
+    
     </ion-card-header>
     <ion-card-content>
       <strong>Total Cost: </strong>${{ order.totalCost }}

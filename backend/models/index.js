@@ -4,6 +4,7 @@ const Category = require('../models/category');
 const SubCategory = require('./subCategory');
 const Inventory = require('../models/inventory');
 const User = require('../models/user');
+const Order = require('../models/order');
 
 const db = {};
 
@@ -16,8 +17,13 @@ Product.hasOne(Inventory, {foreignKey: {name: 'productId', allowNull: false, onD
 // one to many relationship
 Category.hasMany(SubCategory, {foreignKey: {name: 'categoryId', allowNull: false, onDelete: 'CASCADE', onUpdate: 'CASCADE'}});
 
+// one to many relationship
+User.hasMany(Order, {foreignKey: {name: 'userId', allowNull: false, onDelete: 'CASCADE', onUpdate: 'CASCADE'}});
+// Order.belongsTo(User);
+
 // initialize model
-db.User = User;
+// db.User = User;
+// db.PurchaseHistory = PurchaseHistory;
     
 db.sequelize = sequelize;
 

@@ -6,17 +6,23 @@ import { ViewWillEnter } from '@ionic/angular'; // Hopefulyl fix and refresh use
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { map } from 'rxjs/operators';
+
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.page.html',
-  styleUrls: ['./user.page.scss'],
+  selector: 'app-all-orders',
+  templateUrl: './all-orders.page.html',
+  styleUrls: ['./all-orders.page.scss'],
 })
-export class UserPage implements OnInit {
+export class AllOrdersPage implements OnInit {
+
 
   userId: number | null = null;  
   cart: any[] = [];
   purchaseHistory: any[] = [];
   orders: OrderDisplay[] = [];
+
+  firstName: string | null = null;
+  lastName: string | null = null;
+  email: string | null = null;
 
   constructor(public cartService: CartService, private apiService: ApisqlService, private router: Router,
     private userService: UserService) { }
@@ -49,7 +55,7 @@ export class UserPage implements OnInit {
       return;
     }
   
-    this.apiService.getOrders(this.userId).subscribe((orderData) => {
+    this.apiService.getAllOrders().subscribe((orderData) => {
       console.log('Fetched Orders: ', orderData);
   
       const orderPromises = orderData.map((order: any) => {
@@ -83,43 +89,8 @@ export class UserPage implements OnInit {
     });
   }
 
-  
-/*
-* fetch order from user's purchase history attribute
-*/
-
-//   fetchOrders(): void {
-//     if (this.userId === null) {
-//       return;
-//     }
-
-//     this.apiService.getOrders(this.userId).subscribe((orders) => {
-//       console.log('Fetched Orders: ', orders);
-      
-//     //   const cartPromises = orders.map((item: any) => {
-//     //     return this.apiService.getProductById(item.productId)
-//     //       .pipe(map((product: ProductAPI) => {
-//     //         const cartItem = {
-//     //           productName: product.productName,
-//     //           productPrice: product.productPrice,
-//     //           quantity: item.quantity
-//     //         };
-//     //         return cartItem;
-//     //       }))
-//     //       .toPromise();
-//     //   });
-  
-//     //   Promise.all(cartPromises).then(cartItems => {
-//     //     this.cart = cartItems;
-//     //     console.log('Fetched Cart: ', this.cart);
-//     //   });
-//     });
-// }
-
-
 logout() {
   this.userService.logout();
   this.router.navigate(['tabs/login/']);
 }
-
 }
