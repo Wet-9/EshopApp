@@ -4,6 +4,7 @@ import { ProductAPI } from '../productmodel/products';
 import { ApisqlService } from '../apisql.service';
 import { ViewWillEnter } from '@ionic/angular'; // Hopefulyl fix and refresh user page (sql issue)
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-user',
@@ -15,7 +16,8 @@ export class UserPage implements OnInit {
   userId: number | null = null;  
   cart: any[] = [];
 
-  constructor(public cartService: CartService, private apiService: ApisqlService, private router: Router) { }
+  constructor(public cartService: CartService, private apiService: ApisqlService, private router: Router,
+    private userService: UserService) { }
 
 
   // 
@@ -58,7 +60,8 @@ export class UserPage implements OnInit {
 
 // loguotu 
 logout() {
-  this.router.navigate(['/login/']);
+  this.userService.logout();
+  this.router.navigate(['tabs/login/']);
 }
 
 

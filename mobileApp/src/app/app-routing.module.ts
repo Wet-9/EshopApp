@@ -3,7 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { ProductTempPage } from './product-temp/product-temp.page';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'login', pathMatch:'full'},
+  {path: '', redirectTo: 'tabs/home', pathMatch:'full'},
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
@@ -89,7 +89,8 @@ const routes: Routes = [
   {
     path: 'nadmin',
     loadChildren: () => import('./admin-navbar/admin-navbar.module').then( m => m.AdminNavbarPageModule)
-  },  {
+  },
+  {
     path: 'edit-category-modal',
     loadChildren: () => import('./edit-category-modal/edit-category-modal.module').then( m => m.EditCategoryModalPageModule)
   },

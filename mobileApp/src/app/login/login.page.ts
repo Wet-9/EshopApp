@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class LoginPage implements OnInit {
 
   loginForm: FormGroup;
+  formData: any;
 
   constructor(private formBuilder: FormBuilder, private userService: UserService, private navCtrl: NavController, private router: Router) { 
     this.loginForm = formBuilder.group({
@@ -29,6 +30,7 @@ export class LoginPage implements OnInit {
     this.userService.loginUser(formData).subscribe({
       next: (result) => {
         localStorage.setItem("currentUser", JSON.stringify(result)); //Store the user data on our browser
+        this.userService.onlogin.emit();
         alert('Login was successfully');
 
         // Redirecting based on userType
