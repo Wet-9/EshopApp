@@ -133,6 +133,7 @@ export class EditCategoryPage implements OnInit {
     if (this.showDeleteButtons) {
       this.toggleDeleteButtons();
     }
+    this.ngOnInit();
     this.navCtrl.back();
   }
 
