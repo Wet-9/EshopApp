@@ -52,8 +52,8 @@ h2 {
 // 
 .quantity-card {
   border-radius: 16px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  background: #a2d2ff;
+  // box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: transparent;
   transition: 0.5s;
   box-shadow: 0 0 10px white;
 }
@@ -147,8 +147,8 @@ h2 {
 ////
 
 .curve-container {
-  background-color: #d2bcdf;
-  height: 100px;
+  // background-color: #d2bcdf;
+  height: 75px;
   display: flex;
   align-items: center;
   justify-content: space-between;

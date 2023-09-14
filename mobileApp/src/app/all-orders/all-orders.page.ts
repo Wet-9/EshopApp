@@ -61,14 +61,23 @@ export class AllOrdersPage implements OnInit {
       const orderPromises = orderData.map((order: any) => {
         const productPromises = order.products.map((product: any) => {
           return this.apiService.getProductById(product.productId)
-            .pipe(map((productInfo: ProductAPI) => {
-              return {
-                productName: productInfo.productName,
-                productPrice: productInfo.productPrice,
-                quantity: product.quantity
-              };
-            }))
-            .toPromise();
+  .pipe(map((productInfo: ProductAPI) => {
+    if (!productInfo) {
+      console.error('ProductInfo is null or undefined for product ID:', product.productId);
+      return {
+        productName: 'Unknown Product',
+        productPrice: 0,
+        quantity: product.quantity
+      };
+    }
+    return {
+      productName: productInfo.productName,
+      productPrice: productInfo.productPrice,
+      quantity: product.quantity
+    };
+  }))
+  .toPromise();
+
         });
   
         return Promise.all(productPromises).then(products => {

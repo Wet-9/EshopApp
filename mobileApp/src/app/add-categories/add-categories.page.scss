@@ -18,7 +18,7 @@ ion-content {
     transition: 0.3s;
   
     &:hover {
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 8px 16px rgba(7, 5, 5, 0.2);
     }
   }
   
@@ -41,17 +41,20 @@ ion-content {
   }
 
 ion-icon {
-//   margin-right: 10px;
-margin-right: 10px;
+  margin-right: 10px;
+
 font-weight: bold;
-// text-align: center;
+
   color: #9146FF;
 }
 
 .card-space {
-  // font-size: 1em;
   text-align: center;
   font-weight: bold;
+}
+
+.card-space-text {
+  font-size: 16px;
 }
 
 .add-button {
