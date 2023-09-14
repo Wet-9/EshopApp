@@ -18,8 +18,9 @@
       <ion-card-title class="ion-text-center">Today's Product</ion-card-title>
     </ion-card-header>
     <ion-card-content class="card-text">
-        Product: {{ todayProduct?.productName }} <br>
-        Price: {{ todayProduct?.productPrice }}
+      <img [src]="todayProduct?.productURL" alt="Product Image">
+      {{ todayProduct?.productName }} <br>
+      <!-- {{ todayProduct?.productPrice }} -->
     </ion-card-content>
   </ion-card>
 

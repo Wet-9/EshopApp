@@ -12,10 +12,15 @@
   //// Product Card ***********************************
   .product-card {
     border-radius: 16px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background: #ffc8dd;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
+    background: transparent;
     transition: 0.5s;
     // box-shadow: 0 0 10px #d5673b;
+  }
+
+  h2 {
+    color: black;
+    font-weight: bold;
   }
   
   .PName {
@@ -23,7 +28,7 @@
   }
   
   .Pprice {
-    color: #44dd6b;
+    color: black;
     font-size: 30px;
   }
   
@@ -142,13 +147,13 @@
   ////
   
   .curve-container {
-    background-color: #d2bcdf;
+    // background-color: #d2bcdf;
     height: 100px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom-left-radius: 50% 20%;
-    border-bottom-right-radius: 50% 20%;
+    // border-bottom-left-radius: 50% 20%;
+    // border-bottom-right-radius: 50% 20%;
     margin-bottom: 50px;
   }
   

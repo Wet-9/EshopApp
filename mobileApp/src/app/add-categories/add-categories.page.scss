@@ -1,7 +1,7 @@
 
 
 ion-content {
-    --background: #F1F1F1;
+    --background: white;
   }
 
 
@@ -12,7 +12,7 @@ ion-content {
   }
   
   ion-card {
-    background-color: #ffc8dd;
+    background-color: #F7F7F7;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: 0.3s;
@@ -23,7 +23,7 @@ ion-content {
   }
   
   ion-card-title {
-    font-weight: bold;
+    // font-weight: bold;
     text-align: center;
   }
   
@@ -44,17 +44,20 @@ ion-content {
 }
 
 ion-icon {
-//   margin-right: 10px;
+  margin-right: 10px;
 
-font-size: 1em;
 font-weight: bold;
-text-align: center;
-  color: #a2d2ff;
+
+  color: #9146FF;
 }
 
 .card-space {
-  font-size: 1em;
   text-align: center;
+  font-weight: bold;
+}
+
+.card-space-text {
+  font-size: 16px;
 }
 
 .add-button {
