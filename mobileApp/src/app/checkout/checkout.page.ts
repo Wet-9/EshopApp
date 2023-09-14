@@ -56,19 +56,41 @@ export class CheckoutPage implements OnInit {
     this.CalcTotal();
   }
   
+  // updateTotalPrice() {
+  //   this.cartPrice = this.cartService.getTotalPrice();
+  //   console.log(this.cartPrice);
+
+  //   const cartData = this.cartItems.map(item => ({
+  //     productId: item.product.id,
+  //     quantity: item.quantity
+  //   }));
+
+  //   // this.apiService.updateUserCart(this.cartItems).subscribe();
+  //   this.apiService.updateUserCart(cartData).subscribe();
+  //   this.cdr.detectChanges();
+  // }
+
   updateTotalPrice() {
     this.cartPrice = this.cartService.getTotalPrice();
     console.log(this.cartPrice);
 
     const cartData = this.cartItems.map(item => ({
-      productId: item.product.id,
-      quantity: item.quantity
+        productId: item.product.id,
+        quantity: item.quantity
     }));
 
-    // this.apiService.updateUserCart(this.cartItems).subscribe();
-    this.apiService.updateUserCart(cartData).subscribe();
-    this.cdr.detectChanges();
-  }
+    if (this.userService.isAuthenticated()) {
+        this.apiService.updateUserCart(cartData).subscribe(() => {
+            console.log('Cart updated successfully');
+        }, error => {
+            console.error('Error updating cart:', error);
+        });
+        this.cdr.detectChanges();
+    } else {
+        // this.presentAlert();
+        // this.router.navigate(['/tabs/login']);
+    }
+}
   
 // Now a confirm Button
 // When press > Saves JSON file > Refresh Cart > 
@@ -79,6 +101,7 @@ goToPayment() {
   }));
   
   if (this.userService.isAuthenticated()) {
+    // this.ngOnInit();
     this.apiService.updateUserCart(cartData).subscribe(
       response => {
         console.log("Cart updated successfully", response);
