@@ -17,6 +17,7 @@
   <!-- Product Description Card -->
   <ion-card class="product-card">
     <ion-card-header>
+      <h2>Description:</h2>
       <div class="header-flex">
         <div class="pSKU">
           SKU: {{ product?.productSKU }}
@@ -62,7 +63,7 @@
 <!-- Favourite -->
   <div class="favorite-container" (click)="toggleFavorite()">
     <div class="favorite-button">
-      <ion-icon name="heart" class="favorite-icon"></ion-icon>
+      <ion-icon name="heart-outline" class="favorite-icon"></ion-icon>
     </div>
   </div>
   <!-- Add to Cart -->

@@ -12,10 +12,15 @@
 //// Product Card ***********************************
 .product-card {
   border-radius: 16px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  background: #ffc8dd;
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
+  background: transparent;
   transition: 0.5s;
   // box-shadow: 0 0 10px #d5673b;
+}
+
+h2 {
+  color: black;
+  font-weight: bold;
 }
 
 .PName {
@@ -23,7 +28,7 @@
 }
 
 .Pprice {
-  color: #44dd6b;
+  color: black;
   font-size: 30px;
 }
 
@@ -47,8 +52,8 @@
 // 
 .quantity-card {
   border-radius: 16px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  background: #a2d2ff;
+  //box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: transparent;
   transition: 0.5s;
   box-shadow: 0 0 10px white;
 }
@@ -71,14 +76,14 @@
 }
 
 .quantity-button {
-  --color: white;
+  --color: black;
   --background: transparent !important;
   --ripple-color: transparent;
 }
 
 .quantity-number {
   font-size: 1.2em;
-  color: white;
+  color: black;
 }
 
 // Bottom
@@ -92,7 +97,7 @@
 }
 //background: linear-gradient(to right, #ff9800, #ff5722);  /* orange gradient */
 .buy-now-button {
-  background: #76c893;
+  background: #9146FF;
   padding: 20px 40px;
   display: flex;
   align-items: center;
@@ -142,13 +147,13 @@
 ////
 
 .curve-container {
-  background-color: #d2bcdf;
-  height: 100px;
+  background-color: #acacac;
+  height: 75px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom-left-radius: 50% 20%;
-  border-bottom-right-radius: 50% 20%;
+  // border-bottom-left-radius: 50% 20%;
+  // border-bottom-right-radius: 50% 20%;
   margin-bottom: 50px;
 }
 
@@ -159,7 +164,7 @@
 
 .backarrow {
   font-size: 30px;
-  color: #ff4d6d;
+  color: #9146FF;
 }
 
 .test-text {
@@ -191,7 +196,7 @@
 .favorite-icon {
   font-size: 24px;
   margin-left: 30px;
-  color: #ffafcc;
+  color: #9b9b9b;
   border: 2px solid #92949c; 
   border-radius: 50%; 
   padding: 10px; 
