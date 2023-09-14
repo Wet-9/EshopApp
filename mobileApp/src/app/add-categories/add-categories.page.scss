@@ -1,18 +1,18 @@
 
 
 ion-content {
-    --background: #F1F1F1;
+    --background: white;
   }
 
 
   .htitle {
-    font-size: 1.5em;
+    font-size: 2em;
     color: black;
     text-align: center;
   }
   
   ion-card {
-    background-color: #ffc8dd;
+    background-color: #F7F7F7;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: 0.3s;
@@ -23,7 +23,7 @@ ion-content {
   }
   
   ion-card-title {
-    font-weight: bold;
+    // font-weight: bold;
     text-align: center;
   }
   
@@ -35,26 +35,23 @@ ion-content {
     padding: 5px;
   }
   
-.product-count { 
-  // display: flex-box;
-  align-content: center;
-  font-size: medium;
-  // align-items: center;
-  // font-size: 20px;
-}
+  .product-count { 
+    display: flex;
+    align-items: center;
+  }
 
 ion-icon {
 //   margin-right: 10px;
-
-font-size: 1em;
+margin-right: 10px;
 font-weight: bold;
-text-align: center;
-  color: #a2d2ff;
+// text-align: center;
+  color: #9146FF;
 }
 
 .card-space {
-  font-size: 1em;
+  // font-size: 1em;
   text-align: center;
+  font-weight: bold;
 }
 
 .add-button {

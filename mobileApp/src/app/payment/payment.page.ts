@@ -118,8 +118,8 @@ export class PaymentPage implements OnInit {
     }
 
     this.apiService.getUser(this.userId).subscribe((user) => {
-      const cartPromises = user.cart.map((item: { productId: number; quantity: number, productSKU: string; }) => {
-        console.log('item id: ', item.productId, item.productSKU);
+      const cartPromises = user.cart.map((item: { productId: number; quantity: number }) => {
+        console.log('item id: ', item.productId);
         return this.apiService.getProductById(item.productId)
           .pipe(map((product: ProductAPI) => {
             const cartItem = {

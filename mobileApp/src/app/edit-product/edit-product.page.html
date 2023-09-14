@@ -1,10 +1,10 @@
+<ion-buttons class="back-button-container">
+  <ion-button (click)="productback()">
+    <ion-icon name="arrow-back" class="backarrow"></ion-icon>
+  </ion-button>
+</ion-buttons>
 <ion-content>
   <div class="curve-container">
-    <ion-buttons class="back-button-container">
-      <ion-button (click)="productback()">
-        <ion-icon name="arrow-back" class="backarrow"></ion-icon>
-      </ion-button>
-    </ion-buttons>
     <ion-toolbar>
       <!-- <span class="test-text">{{ product?.productName }}</span> -->
       <ion-title class="product-name">{{ product?.productName }}</ion-title>
@@ -25,6 +25,7 @@
   <!-- Product Description Card -->
   <ion-card class="product-card">
     <ion-card-header>
+      <h2>Description:</h2>
       <div class="header-flex">
         <div class="pSKU">
           SKU: {{ product?.productSKU }}
